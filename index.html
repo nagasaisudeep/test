@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Epik Responsive Preview</title>
 <style>
-  :root { --bg:#111214; --fg:#e8e8ea; --muted:#8a8b90; --frame:#2a2b30; }
+  :root { --bg:#ffffff; --fg:#16171a; --muted:#6b6c72; --frame:#e2e3e8; --chip:#f3f4f6; }
   * { box-sizing:border-box; }
   html,body { margin:0; background:var(--bg); color:var(--fg);
     font:13px/1.4 -apple-system, BlinkMacSystemFont, "Inter", sans-serif; overflow-x:hidden; }
@@ -19,10 +19,10 @@
   .box { position:relative; overflow:hidden; border:1px solid var(--frame); border-radius:10px; background:#fff; }
   .dev.mobile .box { border-radius:28px; border-width:6px; border-color:#000; }
   .bar { position:absolute; top:14px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:5; }
-  .seg { display:flex; background:#1d1e22; border:1px solid var(--frame); border-radius:999px; padding:3px; }
+  .seg { display:flex; background:var(--chip); border:1px solid var(--frame); border-radius:999px; padding:3px; }
   .seg button, .reload { all:unset; cursor:pointer; padding:6px 14px; border-radius:999px; color:var(--muted); }
-  .seg button.on { background:var(--fg); color:#111; }
-  .reload { background:#1d1e22; border:1px solid var(--frame); color:var(--fg); }
+  .seg button.on { background:var(--fg); color:#fff; }
+  .reload { background:var(--chip); border:1px solid var(--frame); color:var(--fg); }
   .reload:hover, .seg button:hover:not(.on) { color:var(--fg); }
   .dev.hide { display:none; }
   .box iframe { position:absolute; top:0; left:0; border:0; transform-origin:0 0; background:#fff; }
