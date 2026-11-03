@@ -644,5 +644,8 @@ document.querySelectorAll('.lights').forEach((box,k)=>{
   setTimeout(spawn,2500);
 })();
 </script>
+<!-- demo-only: only Apple (home) and iPhone 18 Pro (Apple Store) open; other cards do nothing -->
+<style>.store[href="#"],.ptitle[href="#"],.card[data-href=""]{cursor:default}.store[href="#"]:hover .img{transform:none}</style>
+<script>document.addEventListener('click',e=>{const a=e.target.closest('.store[href="#"],.cf-card[href="#"],.ptitle[href="#"]');if(a)e.preventDefault()});</script>
 </body>
 </html>
