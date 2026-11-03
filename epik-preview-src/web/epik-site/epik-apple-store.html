@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apple Store · Epik</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0E1230;--ink2:#5D6488;--bg:#F4F6FB;--blue:#00239B;--blue2:#1E3BD8;--line:#E4E8F2;--gold:#F7C843;--green:#12B76A;--red:#E5432F}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Montserrat,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;border:0;cursor:pointer}
+.wrap{max-width:1344px;margin:0 auto;padding:0 48px}
+
+/* header (same as homepage) */
+.top{background:var(--blue)}
+.hdr{height:70px;display:flex;align-items:center;padding:0 32px}
+.logo img{height:34px;display:block}
+.tagline{color:#E3E8FF;font-size:13px;line-height:1.25;font-weight:500;border-left:1px solid rgba(255,255,255,.35);padding-left:14px;margin:0 22px 0 18px}
+.search{flex:1;max-width:585px;height:44px;background:#fff;border-radius:10px;display:flex;align-items:center;gap:10px;padding:0 14px}
+.search .ph{flex:1;font-size:14px;color:#7A7F94}
+.askai{display:flex;align-items:center;gap:5px;color:var(--blue);font-size:13px;font-weight:800}
+.right{margin-left:auto;display:flex;align-items:center}
+.hl{display:flex;align-items:center;gap:7px;color:#fff;font-size:13px;font-weight:600;height:44px;padding:0 14px;border-radius:10px}
+.hi{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;margin-left:4px}
+.hl:hover,.hi:hover{background:rgba(255,255,255,.1)}
+.getapp{display:flex;align-items:center;gap:8px;color:#fff;font-size:13px;font-weight:600;height:40px;padding:0 16px;border:1px solid rgba(255,255,255,.8);border-radius:10px;margin-left:14px}
+.getapp:hover{background:#fff;color:var(--blue)}
+.catbar{height:36px;display:flex;justify-content:center;align-items:center;gap:4px}
+.catbar a{color:#fff;font-size:12px;font-weight:600;padding:0 12px;height:100%;display:flex;align-items:center}
+
+/* breadcrumb */
+.crumb{font-size:12px;color:var(--ink2);padding:14px 0 12px}
+.crumb b{color:var(--ink)}
+
+/* store hero */
+.store{position:relative;border-radius:24px;overflow:hidden;height:236px;background:#ECEDF1 url(epik-assets/apple-banner.png) right -150px center/auto 118% no-repeat;display:flex;align-items:center;padding:0 40px;gap:26px}
+.store:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#F3F4F7 0%,#F3F4F7 40%,rgba(243,244,247,.0) 62%)}
+.store>*{position:relative}
+.arch{width:132px;height:132px;flex:none;filter:drop-shadow(0 10px 20px rgba(14,18,48,.18))}
+.arch img{width:100%;height:100%;object-fit:contain}
+.sinfo h1{font-size:32px;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:12px}
+.verified{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--blue);background:#E6EBFF;padding:5px 10px;border-radius:99px;letter-spacing:0}
+.meta{display:flex;gap:16px;margin-top:8px;font-size:13px;color:var(--ink2);font-weight:500}
+.meta b{color:var(--ink)}
+.chips{display:flex;gap:10px;margin-top:14px}
+.chip{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;padding:7px 12px;border-radius:99px;background:#fff;box-shadow:0 2px 8px rgba(14,18,48,.06)}
+.chip.live:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(18,183,106,.2)}
+.chip.dw{background:#FFF4D6;color:#8A5A12}
+.ctas{display:flex;gap:12px;margin-top:18px}
+.btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px;border-radius:12px;font-weight:700;font-size:14px}
+.btn-p{background:var(--blue);color:#fff;box-shadow:0 8px 18px rgba(0,35,155,.25)}
+.btn-p:hover{background:#0A2FC0}
+.btn-o{background:#fff;color:var(--blue);border:1.5px solid #C9D3F5}
+
+/* tabs + sort */
+.bar{display:flex;justify-content:space-between;align-items:center;margin:22px 0 14px}
+.tabs{display:flex;gap:8px}
+.tabs button{font-size:13px;font-weight:600;padding:8px 15px;border-radius:99px;background:#fff;color:var(--ink2);border:1px solid var(--line)}
+.tabs button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.sort{font-size:13px;color:var(--ink2)}
+.sort b{color:var(--ink)}
+
+/* products */
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.card{background:#fff;border-radius:20px;border:1px solid var(--line);padding:12px 12px 14px;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
+.card:hover{box-shadow:0 14px 30px rgba(14,18,48,.1);transform:translateY(-3px)}
+.pimg{height:150px;border-radius:14px;background:#F6F7FA;display:grid;place-items:center;position:relative;overflow:hidden}
+.pimg img{max-width:82%;max-height:84%;object-fit:contain;mix-blend-mode:multiply}
+.tag{position:absolute;top:8px;left:8px;font-size:10px;font-weight:700;padding:4px 8px;border-radius:99px;background:#fff;display:flex;align-items:center;gap:5px;box-shadow:0 2px 6px rgba(14,18,48,.08)}
+.tag.on:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green)}
+.tag.next{color:var(--ink2)}
+.fav{position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:13px;color:var(--ink2)}
+.ptitle{font-size:14px;font-weight:700;margin-top:12px}
+.psub{font-size:11px;color:var(--ink2);margin-top:2px}
+.price{display:flex;align-items:baseline;gap:6px;margin-top:8px}
+.price b{font-size:17px;font-weight:800}
+.price s{font-size:11px;color:var(--ink2)}
+.price em{font-style:normal;font-size:11px;color:#139A5E;font-weight:700}
+.pact{display:flex;gap:6px;margin-top:12px}
+.pact .btn{height:36px;font-size:12px;padding:0 10px;white-space:nowrap;border-radius:10px;flex:1;justify-content:center}
+.pact .btn-o{flex:0 0 auto;padding:0 14px}
+
+/* blinking diwali string lights on the store banner edges (same as homepage) */
+.store{padding-left:104px}
+.store .lights{position:absolute;top:0;bottom:0;width:72px;pointer-events:none;display:flex;justify-content:space-around;z-index:1}
+.store .lights.l{left:10px}.store .lights.r{right:10px}
+.str{position:relative;width:1px;background:linear-gradient(180deg,rgba(176,120,30,.6),rgba(176,120,30,.12))}
+.bulb{position:absolute;left:-4px;width:9px;height:9px;border-radius:50%;background:#FFC24A;box-shadow:0 0 6px 2px rgba(255,170,40,.9),0 0 16px 4px rgba(255,150,30,.45);animation:twinkle 1.8s ease-in-out infinite}
+.bulb:nth-child(3n){background:#FFE7A0}
+@keyframes twinkle{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.25;transform:scale(.75)}}
+
+.sf{display:flex;gap:10px}
+.sf button{display:flex;align-items:center;gap:8px;height:40px;padding:0 18px;border-radius:12px;background:#fff;border:1px solid #D9DDE7;font-size:14px;font-weight:500;color:var(--ink);box-shadow:0 1px 3px rgba(14,18,48,.06)}
+.sf button:hover{border-color:#AEB6CC}
+
+.rate{display:flex;align-items:center;gap:6px;margin-top:8px}
+.rb{background:#2E8B57;color:#fff;font-size:11px;font-weight:700;padding:2px 7px;border-radius:5px}
+.rc{font-size:12px;color:var(--ink2);font-weight:500}
+.price{margin-top:6px}
+.price s{font-size:12px}
+.price em{font-size:12px}
+
+/* 4 per row, bigger photos */
+.grid{grid-template-columns:repeat(4,1fr);gap:20px}
+.pimg{height:210px}
+.pimg img{max-width:78%;max-height:86%}
+
+/* no shadows anywhere */
+.card,.card:hover,.chip,.tag,.btn,.btn-p,.sf button,.fav{box-shadow:none!important}
+.card:hover{transform:none;border-color:#C9D0E2}
+
+/* card photo carousel */
+.pimg{display:block}
+.pimg .track{display:flex;height:100%;transition:transform .35s ease}
+.pimg .track img{flex:0 0 100%;width:100%;height:100%;max-width:none;max-height:none;object-fit:contain;padding:18px 34px;mix-blend-mode:multiply}
+.pimg .nav{position:absolute;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.85);border:1px solid #E1E5EE;color:#5D6488;font-size:18px;line-height:1;display:grid;place-items:center;opacity:.55;transition:opacity .2s;z-index:2;padding-bottom:2px}
+.pimg .prev{left:8px}.pimg .next{right:8px}
+.card:hover .pimg .nav{opacity:1}
+.pimg .nav:hover{background:#fff;color:var(--ink)}
+.pimg .dots{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:4px}
+.pimg .dots i{width:5px;height:5px;border-radius:3px;background:#C9CFDD;transition:all .2s}
+.pimg .dots i.on{width:14px;background:#5D6488}
+.pimg .tag,.pimg .fav{z-index:2}
+
+/* arrows only on hover */
+.pimg .nav{opacity:0;pointer-events:none}
+.card:hover .pimg .nav{opacity:1;pointer-events:auto}
+
+.today{margin-left:auto;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#0E1230;background:#F7C843;padding:3px 8px;border-radius:6px}
+.card[data-href]:not([data-href=""]){cursor:pointer}
+
+/* store banner pills */
+.sbtns{display:flex;gap:12px;margin-top:18px}
+.pill-p,.pill-g{display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 24px;border-radius:99px;font-size:15px;font-weight:700}
+.pill-p{background:#0B23A0;color:#fff}
+.pill-p:hover{background:#0A2FC0}
+.pill-g{background:rgba(255,255,255,.7);color:var(--ink);border:1.5px solid #C9CEDB;backdrop-filter:blur(6px)}
+.pill-g:hover{background:#fff}
+
+/* smaller banner pills */
+.sbtns{gap:10px;margin-top:14px}
+.pill-p,.pill-g{height:38px;padding:0 16px;font-size:13px;gap:7px}
+.pill-p svg,.pill-g svg{width:16px;height:16px}
+.crumb a:hover{color:var(--blue);text-decoration:underline}
+
+/* ===== mobile header (shared by brand + product pages) ===== */
+@media (max-width:1023px){
+  .hdr{height:auto;flex-wrap:wrap;padding:12px 16px 10px;gap:0}
+  .tagline,.hl,.getapp{display:none!important}
+  .logo img{height:30px}
+  .right{margin-left:auto}
+  .hi{width:40px;height:40px}
+  .search{order:3;flex:0 0 100%;max-width:none;margin-top:10px;height:44px}
+  .catbar{justify-content:flex-start;overflow-x:auto;scrollbar-width:none;padding:0 6px;height:38px}
+  .catbar::-webkit-scrollbar{display:none}
+  .catbar a{flex:none;font-size:12px}
+  .wrap{padding:0 16px}
+  .crumb{padding:10px 0 8px;font-size:11px}
+}
+
+@media (max-width:1023px){
+  .store{height:auto;padding:18px 18px 18px;background-image:none;border-radius:18px;flex-direction:column;align-items:flex-start}
+  .store:before{display:none}
+  .store .lights.l{display:none}
+  .store .lights.r{width:24px;right:4px}
+  .store .lights .str:nth-child(n+2){display:none}
+  .sinfo h1{font-size:24px}
+  .meta{font-size:12px;margin-top:4px}
+  .chips{flex-wrap:wrap;gap:6px;margin-top:10px}
+  .chip{font-size:11px;padding:6px 10px}
+  .sbtns{margin-top:12px}
+  .pill-p,.pill-g{height:36px;padding:0 14px;font-size:12px}
+  .bar{flex-direction:column;align-items:stretch;gap:10px;margin:16px 0 12px}
+  .tabs{overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px}
+  .tabs::-webkit-scrollbar{display:none}
+  .tabs button{flex:none;font-size:12px;padding:7px 13px}
+  .sf{gap:8px}
+  .sf button{flex:1;justify-content:center;height:36px;font-size:13px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .card{padding:8px 8px 10px;border-radius:16px}
+  .pimg{height:150px}
+  .pimg .track img{padding:14px 18px}
+  .pimg .nav{display:none}
+  .tag{font-size:9px;padding:3px 6px}
+  .fav{width:22px;height:22px;font-size:11px}
+  .ptitle{font-size:13px;margin-top:8px}
+  .psub{font-size:10px}
+  .rate{margin-top:6px}.rb{font-size:10px}.rc{font-size:11px}
+  .price b{font-size:15px}
+  .price s,.price em{font-size:10px}
+  .pact{flex-direction:column;gap:6px;margin-top:10px}
+  .pact .btn{height:34px;width:100%}
+  .pact .btn-o{padding:0}
+}
+@media (max-width:1023px){.pact .btn{flex:none!important}}
+
+/* Apple product video behind the store card, faded into the card on the left */
+.store .sbg{position:absolute;top:0;right:0;height:100%;width:62%;object-fit:cover;object-position:60% 55%;z-index:0;pointer-events:none;
+  -webkit-mask:linear-gradient(90deg,transparent 0,#000 38%);mask:linear-gradient(90deg,transparent 0,#000 38%);opacity:.9}
+.store .sinfo{position:relative;z-index:2}
+@media (max-width:1023px){.store .sbg{width:52%;height:160%;top:-62%;object-position:54% 50%;opacity:.75;-webkit-mask:linear-gradient(90deg,transparent 0,#000 55%);mask:linear-gradient(90deg,transparent 0,#000 55%)}}
+
+/* Apple brand intro: full-screen story shown for ~4.5s after tapping Apple on home (mobile) */
+.bi{display:none}
+@media all{
+  html.bi-on,html.bi-on body{overflow:hidden}
+  .bi{display:flex;flex-direction:column;position:fixed;inset:0;z-index:1000;background:#06103A;color:#fff;overflow:hidden;transition:opacity .45s ease,transform .45s ease}
+  .bi{transition:clip-path .9s cubic-bezier(.7,0,.25,1),background-color .9s ease}
+  .bi.out{pointer-events:none}
+  .bi.morph{background-color:rgba(236,237,241,0)}
+  .bi.morph .bi-top,.bi.morph .bi-body,.bi.morph .bi-sh{opacity:0;transform:translateY(12px);transition:opacity .35s ease,transform .5s ease}
+  .bi.morph .bi-v{opacity:.75;transform:none;object-position:54% 50%;-webkit-mask:linear-gradient(90deg,transparent 0,#000 55%);mask:linear-gradient(90deg,transparent 0,#000 55%);
+    transition:top .9s cubic-bezier(.7,0,.25,1),left .9s cubic-bezier(.7,0,.25,1),width .9s cubic-bezier(.7,0,.25,1),height .9s cubic-bezier(.7,0,.25,1),transform .9s cubic-bezier(.7,0,.25,1),opacity .9s ease}
+  .bi.gone{opacity:0;transition:opacity .3s ease}
+  .bi-v{position:absolute;left:0;top:0;width:100%;height:62%;object-fit:cover;object-position:52% 60%;transform:scale(1.25);transform-origin:50% 70%}
+  .bi-sh{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,16,58,.35) 0%,rgba(6,16,58,0) 18%,rgba(6,16,58,0) 34%,rgba(6,16,58,.85) 52%,#06103A 64%)}
+  .bi-top{position:relative;z-index:2;display:flex;align-items:center;gap:10px;padding:16px 16px 0}
+  .bi-back{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:1.5px solid rgba(255,255,255,.55);background:rgba(6,16,58,.25);color:#fff;backdrop-filter:blur(6px)}
+  .bi-epik{height:22px}
+  .bi-div{width:1px;height:20px;background:rgba(255,255,255,.4)}
+  .bi-brand{font-size:19px;font-weight:700;letter-spacing:-.01em;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.35)}
+  .bi-cat{margin-left:auto;display:flex;align-items:center;gap:5px;height:32px;padding:0 12px;border-radius:99px;border:1.5px solid rgba(255,255,255,.55);background:rgba(6,16,58,.3);color:#fff;font-size:12px;font-weight:600;backdrop-filter:blur(6px);text-decoration:none}
+  .bi-body{position:relative;z-index:2;margin-top:auto;padding:0 18px 22px}
+  .bi-live{display:inline-flex;align-items:center;gap:7px;padding:5px 12px 5px 6px;border-radius:99px;border:1.5px solid rgba(80,220,150,.7);background:rgba(6,16,58,.5);font-size:12px;font-weight:600}
+  .bi-live i{width:12px;height:12px;border-radius:50%;background:#FF3B30;box-shadow:0 0 0 3px rgba(255,59,48,.25);animation:biBlink 1s ease-in-out infinite}
+  @keyframes biBlink{50%{opacity:.4}}
+  .bi h1{font-size:38px;line-height:1.02;font-weight:800;letter-spacing:-.03em;margin:12px 0 0}
+  .bi h1 em{font-style:normal;color:#F7C843}
+  .bi p{font-size:13.5px;line-height:1.45;color:#E3E9FF;margin:8px 0 0;max-width:320px}
+  .bi-feats{display:flex;margin-top:16px}
+  .bi-feats span{flex:1;display:flex;align-items:center;gap:7px;font-size:11px;font-weight:600;line-height:1.25;padding:0 8px;border-left:1px solid rgba(255,255,255,.2)}
+  .bi-feats span:first-child{border-left:0;padding-left:0}
+  .bi-feats svg{flex:none}
+  .bi-tiles{display:flex;gap:10px;margin:18px -18px 0;padding:0 18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-padding:0 18px}
+  .bi-tiles::-webkit-scrollbar{display:none}
+  .bi-tiles a{flex:0 0 calc(50% - 5px);scroll-snap-align:start;display:flex;align-items:center;gap:8px;height:64px;padding-right:12px;border-radius:16px;border:1px solid rgba(255,255,255,.25);background:linear-gradient(135deg,rgba(40,70,170,.55),rgba(10,20,70,.6));color:#fff;text-decoration:none;overflow:hidden}
+  .bi-tiles img{height:100%;width:64px;object-fit:cover;flex:none}
+  .bi-tiles b{flex:1;font-size:15px;font-weight:700}
+  .bi-btns{display:flex;gap:10px;margin-top:14px}
+  .bi-btns a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;height:48px;border-radius:99px;font-size:15px;font-weight:700;text-decoration:none;color:#fff}
+  .bi-btns .p{background:linear-gradient(180deg,#2F5BFF,#1A3BE0);box-shadow:0 8px 20px rgba(30,70,255,.45)}
+  .bi-btns .g{border:1.5px solid rgba(255,255,255,.5);background:rgba(255,255,255,.08)}
+  .bi-prog{display:flex;gap:6px;justify-content:center;margin-top:16px}
+  .bi-prog i{width:34px;height:4px;border-radius:2px;background:rgba(255,255,255,.25);overflow:hidden;position:relative}
+  .bi-prog i:after{content:"";position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left;animation:biFill 3.33s linear forwards}
+  .bi-prog i:nth-child(2):after{animation-delay:3.33s}.bi-prog i:nth-child(3):after{animation-delay:6.67s}
+  @keyframes biFill{to{transform:scaleX(1)}}
+}
+
+/* desktop intro: text left, product video right */
+@media (min-width:900px){
+  .bi-v{left:auto!important;right:0;top:0;width:58%!important;height:100%!important;transform:none!important;object-fit:cover;object-position:50% 62%;
+    -webkit-mask:linear-gradient(90deg,transparent 0,#000 30%);mask:linear-gradient(90deg,transparent 0,#000 30%)}
+  .bi-sh{background:linear-gradient(90deg,#06103A 0%,#06103A 36%,rgba(6,16,58,.55) 52%,rgba(6,16,58,0) 70%)}
+  .bi-top{padding:22px max(32px,6vw) 0}
+  .bi-body{margin:auto 0;padding:0 0 0 max(32px,6vw);width:min(46%,560px)}
+  .bi h1{font-size:clamp(40px,4.4vw,64px)}
+  .bi p{font-size:16px;max-width:440px}
+  .bi-tiles{margin:22px 0 0;padding:0;scroll-padding:0}
+  .bi-prog{justify-content:flex-start}
+  .bi-cat{background:rgba(6,16,58,.65);border-color:rgba(255,255,255,.7)}
+}
+
+/* video replaces the banner photo */
+.store{background-image:none!important}
+@media (min-width:1024px){.store .sbg{width:58%;opacity:1;object-position:50% 62%}}
+</style>
+</head>
+<body>
+<div class="bi" id="bi" aria-label="Experience Apple Live">
+  <video class="bi-v" src="epik-assets/apple-hero.mp4" autoplay muted loop playsinline preload="auto"></video>
+  <div class="bi-sh"></div>
+  <div class="bi-top">
+    <a class="bi-back" href="epik-home-responsive.html" aria-label="Back"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></a>
+    <img class="bi-epik" src="epik-assets/epik-logo.svg" alt="epik"><span class="bi-div"></span><b class="bi-brand">Apple</b>
+    <a class="bi-cat" href="#" data-skip>View catalogue <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+  </div>
+  <div class="bi-body">
+    <span class="bi-live"><i></i>EPIK Live · Specialist online</span>
+    <h1>Experience<br>Apple <em>Live</em></h1>
+    <p>Explore iPhone, Mac and Apple Watch with a real store expert over a video call.</p>
+    <div class="bi-tiles">
+      <a href="#" data-skip><img src="epik-assets/gallery/iphone-2.webp" alt=""><b>iPhone</b><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#" data-skip><img src="epik-assets/gallery/watch-1.jpg" alt=""><b>Watch</b><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#" data-skip><img src="epik-assets/gallery/airpods-1.jpg" alt=""><b>AirPods</b><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#" data-skip><img src="epik-assets/gallery/mac-1.jpg" alt=""><b>Mac</b><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="bi-btns">
+      <a class="p" href="#" data-skip><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="3"/><path d="m16 10 6-3v10l-6-3"/></svg>Video call store</a>
+      <a class="g" href="#" data-skip><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H9l-5 4z"/></svg>Message</a>
+    </div>
+    <div class="bi-prog"><i></i><i></i><i></i></div>
+  </div>
+</div>
+
+<svg width="0" height="0" style="position:absolute"><defs>
+  <symbol id="vid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="3"/><path d="m16 10 6-3v10l-6-3"/></symbol>
+</defs></svg>
+
+<div class="top">
+  <div class="hdr">
+    <a class="logo" href="epik-home-responsive.html"><img src="epik-assets/epik-logo.svg" alt="epik"></a>
+    <span class="tagline">Try and buy<br>everything store</span>
+    <div class="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E1230" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span class="ph">Search in Apple Store</span><a class="askai" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 3l1.8 6.2L18 11l-6.2 1.8L10 19l-1.8-6.2L2 11l6.2-1.8zM19 2l.8 2.2L22 5l-2.2.8L19 8l-.8-2.2L16 5l2.2-.8z"/></svg>Ask AI</a></div>
+    <div class="right">
+      <a class="hl" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Select address</a>
+      <a class="hl" href="#">How it works</a>
+      <a class="hi" href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></a>
+      <a class="hi" href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.6 12h11L21 7H6"/></svg></a>
+      <a class="getapp" href="#">Get the App <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    </div>
+  </div>
+  <nav class="catbar"><a href="#">Home &amp; Living</a><a href="#">Kitchen</a><a href="#">Mobiles &amp; Gadgets</a><a href="#">Personal Luxury</a></nav>
+</div>
+
+<main class="wrap">
+  <div class="crumb"><a href="epik-home-responsive.html">Home</a> › <a href="epik-home-responsive.html#stores">Brand stores</a> › <b>Apple</b></div>
+
+  <!-- store header -->
+  <section class="store">
+    <video class="sbg" src="epik-assets/apple-hero.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video><div class="lights l"></div><div class="lights r"></div>
+    <div class="sinfo">
+      <h1>Apple Store</h1>
+      <div class="meta"><span>★ <b>4.9</b> (3.2k demos)</span></div>
+      <div class="chips">
+        <span class="chip live">212 exploring live</span>
+        <span class="chip">⏱ Expert joins under 2 min</span>
+      </div>
+      <div class="sbtns">
+        <a class="pill-p" href="#"><svg width="20" height="20"><use href="#vid"/></svg>Video call store</a>
+        <a class="pill-g" href="#"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 4h16v12H9l-5 4z"/></svg>Message</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- tabs -->
+  <div class="bar">
+    <div class="tabs" id="tabs"><button class="on" data-c="all">All</button><button data-c="phone">iPhone</button><button data-c="watch">Watch</button><button data-c="audio">AirPods</button><button data-c="mac">Mac</button><button data-c="acc">Accessories</button></div>
+    <div class="sf">
+      <button><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h10M3 12h7M3 18h5"/><circle cx="17" cy="15" r="4.5"/><path d="M17 13v2l1.3 1"/></svg>Sort</button>
+      <button><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 4h18l-7 8.5V19l-4 2v-8.5z"/></svg>Filter</button>
+    </div>
+  </div>
+
+  <!-- products -->
+  <div class="grid" id="grid"></div>
+</main>
+
+<script>
+// one product per category, prices from getepik.in/collections/apple-bclp
+const P=[
+ {c:'phone',g:['iphone-1.jpg','iphone-2.webp','iphone-3.webp','iphone-4.webp'],t:'iPhone 18 Pro',s:'256 GB · Burgundy',p:'₹1,64,900',live:true,r:4.8,n:'1.2k'},
+ {c:'watch',g:['watch-1.jpg','watch-2.jpg','watch-3.jpg','watch-4.jpg'],t:'Apple Watch Series 12',s:'42 mm · GPS · Space Grey',p:'₹56,900',live:true,r:4.7,n:312},
+ {c:'audio',g:['airpods-1.jpg','airpods-2.jpg','airpods-3.jpg','airpods-4.jpg'],t:'AirPods Pro 3',s:'ANC · Live translation',p:'₹22,090',mrp:'₹25,990',off:'15% off',live:true,r:4.8,n:864},
+ {c:'mac',g:['mac-1.jpg','mac-2.webp','mac-3.webp','mac-4.webp'],t:'MacBook Neo 13"',s:'A18 Pro · 256 GB · Indigo',p:'₹79,900',live:false,next:'6:30 PM',r:4.6,n:95},
+ {c:'acc',g:['charger-1.jpg','charger-2.jpg','charger-3.jpg'],t:'20W USB-C Adapter',s:'For iPhone, iPad, AirPods',p:'₹1,533',mrp:'₹2,190',off:'30% off',live:true,r:4.7,n:3},
+];
+const grid=document.getElementById('grid');
+function render(c){
+  grid.innerHTML=P.filter(x=>c==='all'||x.c===c).map(x=>`
+  <article class="card" data-href="${x.c==='phone'?'epik-iphone18pro.html':''}">
+    <div class="pimg" data-i="0"><div class="track">${x.g.map(f=>`<img src="epik-assets/gallery/${f}" alt="${x.t}" loading="lazy">`).join('')}</div>
+      <button class="nav prev" aria-label="Previous photo">‹</button><button class="nav next" aria-label="Next photo">›</button>
+      <div class="dots">${x.g.map((_,k)=>`<i class="${k?'':'on'}"></i>`).join('')}</div>
+      ${x.live?'<span class="tag on">Live demo now</span>':`<span class="tag next">Next demo ${x.next}</span>`}
+      <span class="fav">♡</span></div>
+    <a class="ptitle" style="display:block" href="${x.c==='phone'?'epik-iphone18pro.html':'#'}">${x.t}</a><div class="psub">${x.s}</div>
+    <div class="rate"><span class="rb">${x.r} ★</span><span class="rc">(${x.n})</span></div>
+    <div class="price"><b>${x.p}</b>${x.mrp?`<s>${x.mrp}</s><em>${x.off}</em>`:''}</div>
+    <div class="pact">
+      <a class="btn btn-p" href="#"><svg width="14" height="14"><use href="#vid"/></svg>${x.live?'Live demo':'Book demo'}</a>
+      <a class="btn btn-o" href="#">Buy</a>
+    </div>
+  </article>`).join('');
+}
+const startC=new URLSearchParams(location.search).get('c')||'all';
+render(startC);
+document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.c===startC));
+// photo carousel inside each card
+grid.addEventListener('click',e=>{
+  const b=e.target.closest('.nav');
+  if(!b){ // anywhere else on the card opens the product page
+    if(e.target.closest('.fav'))return;
+    const c=e.target.closest('.card');if(c&&c.dataset.href){e.preventDefault();location.href=c.dataset.href}
+    return;
+  }
+  e.preventDefault();
+  const box=b.closest('.pimg'),n=box.querySelectorAll('.track img').length;
+  let i=(+box.dataset.i+(b.classList.contains('next')?1:-1)+n)%n;box.dataset.i=i;
+  box.querySelector('.track').style.transform=`translateX(-${i*100}%)`;
+  box.querySelectorAll('.dots i').forEach((d,k)=>d.classList.toggle('on',k===i));
+});
+document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');render(b.dataset.c)});
+
+// string lights: strings of different lengths, staggered blink
+document.querySelectorAll('.store .lights').forEach((box,k)=>{
+  const lens=k?[150,210,120]:[190,120,220];
+  box.innerHTML=lens.map((h,j)=>{let b='';for(let y=16;y<h;y+=24)b+=`<i class="bulb" style="top:${y}px;animation-delay:${((y/24+j*2+k)%5)*.35}s"></i>`;return `<span class="str" style="height:${h}px">${b}</span>`}).join('');
+});
+
+// Apple brand intro: plays when arriving via an Apple link (?intro), auto-closes after 10s; tap a button to skip
+(()=>{const bi=document.getElementById('bi');if(!bi)return;
+  const show=/[?&]intro\b/.test(location.search);
+  if(!show){bi.remove();return}
+  document.documentElement.classList.add('bi-on');
+  // close by shrinking the intro into the store banner (clip-path), then hand over
+  const close=()=>{if(bi.classList.contains('out'))return;bi.classList.add('out');
+    scrollTo(0,0);const r=document.querySelector('.store').getBoundingClientRect();
+    bi.style.clipPath='inset(0px 0px 0px 0px round 0px)';bi.offsetWidth;
+    const v=bi.querySelector('.bi-v'),g=document.querySelector('.store .sbg').getBoundingClientRect();
+    v.style.cssText+=`;top:${g.top}px;left:${g.left}px;width:${g.width}px;height:${g.height}px`;
+    bi.classList.add('morph');
+    bi.style.clipPath=`inset(${r.top}px ${innerWidth-r.right}px ${innerHeight-r.bottom}px ${r.left}px round 0px)`;
+    history.replaceState(null,'',location.pathname);
+    setTimeout(()=>{document.documentElement.classList.remove('bi-on');bi.classList.add('gone')},900);
+    setTimeout(()=>bi.remove(),1250)};
+  const t=setTimeout(close,10000);
+  // each time a progress dash fills, flip the product tiles to the other pair
+  const tl=bi.querySelector('.bi-tiles');
+  [[3330,2],[6670,0]].forEach(([ms,k])=>setTimeout(()=>{const c=tl.children[k];if(c)tl.scrollTo({left:c.offsetLeft-tl.firstElementChild.offsetLeft,behavior:"smooth"})},ms));
+  bi.querySelectorAll('[data-skip]').forEach(a=>a.onclick=e=>{e.preventDefault();clearTimeout(t);close()});
+})();
+</script>
+</body>
+</html>
