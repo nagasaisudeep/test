@@ -28,6 +28,9 @@
   #fs { display:none; position:fixed; inset:0; z-index:10; background:#fff; }
   #fs iframe { width:100%; height:100%; border:0; }
   #fs.on { display:block; }
+  #esc { position:absolute; bottom:20px; left:50%; transform:translateX(-50%); background:rgba(22,23,26,.85); color:#fff; border:0; border-radius:999px; padding:8px 16px; font:inherit; cursor:pointer; transition:opacity .4s; }
+  #esc kbd { font:inherit; font-weight:600; border:1px solid rgba(255,255,255,.4); border-radius:5px; padding:0 5px; margin:0 2px; }
+  #esc.fade { opacity:.55; } #esc:hover { opacity:1; }
   .box iframe { position:absolute; top:0; left:0; border:0; transform-origin:0 0; background:#fff; }
 </style>
 </head>
@@ -50,7 +53,7 @@
     <div class="label"><b>Mobile web</b> · 390 × 844</div>
   </div>
 </div>
-<div id="fs"><iframe title="Website full screen"></iframe></div>
+<div id="fs"><iframe title="Website full screen"></iframe><button id="esc">Click or press <kbd>Esc</kbd> to exit full screen</button></div>
 <section class="doc">
   <h2>Design Decisions</h2>
   <iframe src="epik-preview-src/design-decisions.pdf#view=FitH" title="Design Decisions"></iframe>
@@ -76,11 +79,13 @@
   });
   document.getElementById('reload').onclick = () =>
     document.querySelectorAll('.dev iframe').forEach(f => f.src = f.src);
-  const fs = document.getElementById('fs');
+  const fs = document.getElementById('fs'), esc = document.getElementById('esc');
+  esc.onclick = () => document.fullscreenElement ? document.exitFullscreen() : closeFull();
   function closeFull() { fs.classList.remove('on'); fs.firstChild.src = 'about:blank'; }
   document.getElementById('full').onclick = () => {
     fs.firstChild.src = document.querySelector('.desktop iframe').src;
     fs.classList.add('on');
+    esc.classList.remove('fade'); clearTimeout(esc.t); esc.t = setTimeout(() => esc.classList.add('fade'), 3000);
     fs.requestFullscreen?.().catch(() => {});
     fs.firstChild.onload = () => fs.firstChild.contentWindow.addEventListener('keydown', e => e.key === 'Escape' && closeFull());
   };
