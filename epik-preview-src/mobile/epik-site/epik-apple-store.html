@@ -425,11 +425,13 @@ document.querySelectorAll('.store .lights').forEach((box,k)=>{
 </script>
 <!-- demo-only: only Apple (home) and iPhone 18 Pro (Apple Store) open; other cards do nothing -->
 <style>.store[href="#"],.ptitle[href="#"],.card[data-href=""]{cursor:default}.store[href="#"]:hover .img{transform:none}
-.demo-hint .cf-card[href="#"]>*,.demo-hint .store[href="#"],.demo-hint .card[data-href=""]{opacity:.35;filter:grayscale(.6);transition:opacity .2s}
-.store:not([href="#"]),.cf-card:not([href="#"]),.card[data-href]:not([data-href=""]){position:relative}
+.demo-hint .store[href="#"],.demo-hint .card[data-href=""]{opacity:.35;filter:grayscale(.6);transition:opacity .2s}
+.store:not([href="#"]),.card[data-href]:not([data-href=""]){position:relative}
 .demo-hint .store:not([href="#"])::before,.demo-hint .cf-card:not([href="#"])::before,.demo-hint .card[data-href]:not([data-href=""])::before{content:"Demo · Only this works";position:absolute;top:8px;left:50%;transform:translateX(-50%);z-index:5;white-space:nowrap;background:#F7C843;color:#0E1230;font:800 10px/1 Montserrat,system-ui,sans-serif;padding:5px 9px;border-radius:99px;box-shadow:0 4px 12px rgba(0,0,0,.2);animation:demoPulse 1.6s ease-in-out infinite}
 .rail{padding-top:16px!important}.demo-hint .store:not([href="#"])::before{top:-12px!important}
 .cf-card>*,.store,.card{transition:opacity .5s,filter .5s}
+.demo-hint .cf-card[href="#"]>img,.demo-hint .cf-card[href="#"]>video{filter:grayscale(1) brightness(.55)}
+.demo-hint .cf-card:not([href="#"])::before{top:50%}
 @keyframes demoPulse{50%{transform:translateX(-50%) scale(1.08)}}</style>
 <script>document.addEventListener('click',e=>{const a=e.target.closest('.store[href="#"],.cf-card[href="#"],.ptitle[href="#"]');if(a)e.preventDefault()});
 document.documentElement.classList.add('demo-hint');setTimeout(()=>document.documentElement.classList.remove('demo-hint'),5000);</script>
