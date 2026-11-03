@@ -1,0 +1,922 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Epik Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0E1230;--ink2:#5D6488;--bg:#F4F6FB;--blue:#1E3BD8;--blue-d:#14238F;--navy:#121A5C;--line:#E4E8F2;--gold:#F5A524;--goldl:#FFE3A3;--red:#E5432F;--green:#22B573}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Montserrat,system-ui,sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
+button{font-family:inherit;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1344px;margin:0 auto;padding:0 16px}
+
+/* ---------- top: header + search ---------- */
+.top{background:linear-gradient(180deg,var(--blue-d),#2341D9);padding:12px 0 72px}
+.hdr{display:flex;align-items:center;gap:12px}
+.logo{color:#fff;font-weight:800;font-size:28px;letter-spacing:-.05em;position:relative;flex:none}
+.logo .tk{position:absolute;left:43px;top:-6px;color:var(--gold);font-size:13px}
+.right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.loc,.navlink{display:none}
+.ib{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;position:relative;flex:none}
+.ib.cart{background:#9DA8F2}.ib.me{background:var(--navy)}
+.badge{position:absolute;top:-4px;right:-3px;background:var(--gold);color:var(--ink);font-size:10px;font-weight:800;width:18px;height:18px;border-radius:50%;display:grid;place-items:center}
+.search{height:52px;background:#fff;border-radius:99px;display:flex;align-items:center;padding:0 5px 0 18px;gap:10px;margin-top:12px}
+.search .ph{flex:1;color:#8A90AE;font-size:14px;white-space:nowrap;overflow:hidden}
+.askai{height:42px;border-radius:99px;background:linear-gradient(135deg,#2B45E0,#1A2AA8);color:#fff;font-weight:700;font-size:13px;padding:0 14px;display:flex;align-items:center;gap:6px;flex:none}
+.askai i{color:var(--gold);font-style:normal}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;color:#fff;border-radius:24px;margin-top:-58px;padding:16px;height:232px;
+  background:radial-gradient(120% 130% at 100% 0%,#4B78FF 0%,#2346E6 38%,#1530B8 75%,#0B1F86 100%);box-shadow:0 18px 40px rgba(20,35,143,.25)}
+.rang{position:absolute;opacity:.13;pointer-events:none}
+.copy{position:relative;z-index:2;max-width:200px}
+.pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:3px 10px 3px 3px;font-size:11px;font-weight:600;white-space:nowrap}
+.pill .live{background:var(--red);border-radius:99px;padding:3px 8px;font-size:10px;font-weight:800;letter-spacing:.06em;display:flex;align-items:center;gap:5px}
+.pill .live:before{content:"";width:5px;height:5px;border-radius:50%;background:#fff;animation:blink 1.2s infinite}
+@keyframes blink{50%{opacity:.2}}
+.hero h1{font-size:22px;line-height:1.1;letter-spacing:-.03em;font-weight:700;margin-top:12px}
+.hero h1 em{font-style:normal;color:var(--goldl)}
+.hero p{font-size:12px;color:#D3DEFF;margin-top:7px;line-height:1.45}
+.steps{display:none}
+.cta{margin-top:12px;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:99px;background:var(--gold);color:var(--ink);font-weight:800;font-size:13px;box-shadow:0 6px 18px rgba(245,165,36,.4)}
+.visual{position:absolute;right:14px;top:50px;width:118px;height:166px}
+.call{position:absolute;inset:0;border-radius:18px;overflow:hidden;background:linear-gradient(180deg,#24326A,#111A40);border:3px solid rgba(255,255,255,.18);box-shadow:0 14px 30px rgba(0,0,0,.35)}
+.call .tag{position:absolute;top:7px;left:7px;font-size:8px;font-weight:800;background:var(--red);padding:2px 6px;border-radius:4px}
+.call .st{position:absolute;top:24px;left:7px;font-size:8px;font-weight:600;background:rgba(0,0,0,.4);padding:2px 6px;border-radius:4px;white-space:nowrap}
+.call .pip{position:absolute;right:6px;bottom:38px;width:28px;height:38px;border-radius:7px;background:linear-gradient(160deg,#F2C9A8,#B9805E);border:1.5px solid #fff}
+.call .bar{position:absolute;bottom:0;left:0;right:0;height:30px;background:rgba(0,0,0,.45);display:flex;gap:8px;justify-content:center;align-items:center}
+.call .bar i{width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,.25)}
+.call .bar i.e{background:var(--red)}
+.call .staff{position:absolute;left:0;bottom:0;width:100%}
+.bubble{display:none}
+.diya{position:absolute;right:14px;top:10px;filter:drop-shadow(0 0 8px rgba(255,190,80,.85));z-index:2}
+.flame{animation:flick 1.6s ease-in-out infinite;transform-origin:32px 26px}
+@keyframes flick{50%{transform:scale(.9,1.06)}}
+
+/* ---------- stores ---------- */
+.sh{display:flex;justify-content:space-between;align-items:flex-end;margin-top:20px;gap:12px}
+.sh h2{font-size:18px;font-weight:700;letter-spacing:-.02em}
+.sh small{display:flex;align-items:center;gap:6px;font-size:11px;color:#139A5E;font-weight:700;margin-top:3px}
+.sh small:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(34,181,115,.2)}
+.sh a{font-size:13px;font-weight:700;color:var(--blue);white-space:nowrap}
+.tabs{display:none}
+.railwrap{position:relative;margin:12px -16px 0}
+.rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 16px 8px;scrollbar-width:none;scroll-behavior:smooth}
+.rail::-webkit-scrollbar{display:none}
+.store{flex:none;width:146px;scroll-snap-align:start;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 6px 18px rgba(14,18,48,.07);transition:transform .2s,box-shadow .2s}
+.store:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(14,18,48,.12)}
+.store .img{height:120px;position:relative;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.store .nm{position:absolute;top:10px;left:0;right:0;text-align:center;font-weight:700;font-size:14px;letter-spacing:.06em;color:#fff}
+.store .lv{position:absolute;bottom:8px;left:8px;background:rgba(255,255,255,.95);border-radius:99px;font-size:9px;font-weight:800;padding:3px 7px;display:flex;align-items:center;gap:4px}
+.store .lv:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--green)}
+.store .b{padding:9px 11px 11px}
+.store .b b{font-size:13px;display:block;font-weight:700}
+.store .b span{font-size:11px;color:var(--ink2)}
+.arrow{display:none}
+.dots{display:flex;gap:5px;justify-content:center;margin-top:8px}
+.dots i{width:6px;height:6px;border-radius:3px;background:#C9CFDD;transition:all .25s}
+.dots i.on{width:18px;background:var(--navy)}
+
+/* bottom nav (mobile) */
+.nav{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);width:270px;height:58px;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-radius:99px;display:flex;justify-content:space-around;align-items:center;box-shadow:0 8px 24px rgba(14,18,48,.16);z-index:5}
+.nav div{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#4A5272;position:relative}
+.nav div.on{background:#E8EBF3;color:var(--ink)}
+.nav .dot{position:absolute;top:8px;right:9px;width:8px;height:8px;border-radius:50%;background:var(--red);border:1.5px solid #fff}
+.spacer{height:110px}
+
+/* ---------- desktop ---------- */
+@media (min-width:1024px){
+  .wrap{padding:0 48px}
+  .top{padding:16px 0 96px}
+  .hdr{gap:28px}
+  .hdr .search{flex:1;max-width:640px;margin-top:0}
+  .mob-search{display:none}
+  .loc{display:flex;align-items:center;gap:6px;color:#D3DEFF;font-size:13px;white-space:nowrap}
+  .loc b{color:#fff}
+  .navlink{display:block;color:#fff;font-weight:600;font-size:14px;white-space:nowrap}
+  .right{gap:22px}
+  .hero{margin-top:-76px;height:340px;padding:40px 56px;border-radius:28px;display:grid;grid-template-columns:1fr 480px}
+  .copy{max-width:none;display:flex;flex-direction:column;justify-content:center}
+  .pill{font-size:12px;align-self:flex-start}
+  .hero h1{font-size:50px;margin-top:16px;line-height:1.04}
+  .hero p{font-size:17px;max-width:500px;margin-top:12px}
+  .row{display:flex;align-items:center;gap:18px;margin-top:20px}
+  .cta{margin-top:0;height:48px;padding:0 24px;font-size:15px}
+  .steps{display:flex;gap:8px}
+  .steps span{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:7px 11px;border-radius:99px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18)}
+  .steps b{width:18px;height:18px;border-radius:50%;background:#fff;color:var(--blue);display:grid;place-items:center;font-size:10px}
+  .visual{position:relative;right:auto;top:auto;width:100%;height:100%}
+  .call{left:80px;right:60px;top:-6px;bottom:-6px;inset:auto;position:absolute;width:330px;height:272px;border-width:4px;border-radius:22px}
+  .call .tag{font-size:10px;top:12px;left:12px;padding:3px 8px}
+  .call .st{font-size:11px;top:12px;left:auto;right:12px}
+  .call .pip{width:58px;height:76px;bottom:56px;right:12px;border-radius:10px}
+  .call .bar{height:46px;gap:12px}.call .bar i{width:28px;height:28px}
+  .bubble{display:block;position:absolute;background:#fff;color:var(--ink);border-radius:12px;padding:8px 12px;font-size:12px;font-weight:700;box-shadow:0 10px 24px rgba(0,0,0,.25);white-space:nowrap;z-index:3}
+  .bubble small{display:block;font-weight:500;color:var(--ink2);font-size:10px}
+  .b1{left:-10px;top:120px}.b2{right:0;bottom:26px;display:flex;gap:8px;align-items:center}
+  .b2 span{width:28px;height:28px;border-radius:50%;background:#C98E6B}
+  .diya{right:auto;left:calc(100% - 520px);top:auto;bottom:22px;width:46px;height:46px}
+  .sh{margin-top:28px}
+  .sh h2{font-size:22px}
+  .sh small{font-size:13px}
+  .tabs{display:flex;gap:8px}
+  .tabs span{font-size:13px;font-weight:600;padding:8px 14px;border-radius:99px;background:#fff;color:var(--ink2);border:1px solid var(--line);cursor:pointer}
+  .tabs span.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .sh .r{display:flex;align-items:center;gap:20px}
+  .railwrap{margin:16px 0 0}
+  .rail{padding:4px 0 10px;gap:16px}
+  .store{width:calc((100% - 80px)/6)}
+  .store .img{height:172px}
+  .store .img span[style]{font-size:72px!important}
+  .store .nm{font-size:17px}
+  .store .lv{font-size:11px;padding:4px 9px}
+  .store .b{padding:12px 14px 14px}
+  .store .b b{font-size:15px}.store .b span{font-size:12px}
+  .arrow{display:grid;position:absolute;top:70px;width:42px;height:42px;border-radius:50%;background:#fff;box-shadow:0 6px 16px rgba(14,18,48,.15);place-items:center;font-size:18px;z-index:2}
+  .arrow.l{left:-20px}.arrow.r{right:-20px}
+  .dots,.nav,.spacer{display:none}
+}
+
+/* category bar (matches getepik.in) */
+.catbar{background:#0B1F96;margin:14px 0 0;box-shadow:0 4px 0 rgba(255,255,255,.08)}
+.catbar .wrap{display:flex;gap:28px;overflow-x:auto;scrollbar-width:none;height:46px;align-items:center}
+.catbar .wrap::-webkit-scrollbar{display:none}
+.catbar a{color:#fff;font-weight:700;font-size:13px;white-space:nowrap}
+@media (min-width:1024px){
+  .catbar{margin-top:16px}
+  .catbar .wrap{height:64px;gap:96px;padding-left:58px}
+  .catbar a{font-size:18px}
+}
+
+/* mega menu */
+.catbar{position:relative;z-index:30}
+.catbar a.t{padding:0 2px;height:100%;display:flex;align-items:center;cursor:pointer}
+.mega{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;border-radius:0 0 20px 20px;box-shadow:0 24px 50px rgba(14,18,48,.25);overflow:hidden}
+.mega.open{display:grid}
+.mega .col{padding:22px 24px 28px}
+.mega .col.g{background:#F2F3F6}
+.mega h6{color:#0B23A0;font-size:15px;font-weight:700;margin:0 0 10px}
+.mega a{display:block;color:var(--ink);font-weight:400;font-size:14px;padding:6px 0;white-space:nowrap}
+.mega a:hover{color:var(--blue)}
+.mega hr{border:0;border-top:1px solid #DDE1EA;margin:14px 0 16px}
+.mega h6+a{margin-top:0}
+@media (max-width:1023px){.mega{grid-template-columns:1fr 1fr!important}.mega .col{padding:16px}}
+@media (min-width:1024px){
+  .catbar .wrap{gap:0;padding-left:34px}
+  .catbar a.t{padding:0 24px;margin-right:48px}
+  .catbar a.t.on{background:rgba(255,255,255,.1)}
+  .mega{left:110px;right:auto;border-radius:0 0 24px 24px}
+  .mega .col{padding:34px 40px 40px;width:330px}
+  .mega h6{font-size:20px;margin-bottom:12px}
+  .mega a{font-size:18px;padding:9px 0}
+}
+/* real images */
+.store .img{background-size:cover;background-position:center}
+.call video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* header matched to getepik.in (desktop measurements at 1440) */
+.d{display:none!important}
+@media (min-width:1024px){
+  .m{display:none!important}
+  .d{display:flex!important}
+  .top{background:#00239B;padding:0 0 96px}
+  .top>.wrap{padding:0 32px;max-width:none}
+  .hdr{height:70px;gap:0}
+  .logo{font-size:27px}
+  .logo .tk{left:41px}
+  .tagline{color:#E3E8FF;font-size:13px;line-height:1.25;font-weight:500;border-left:1px solid rgba(255,255,255,.35);padding-left:14px;margin:0 22px 0 18px;align-items:center}
+  .hdr .search{max-width:585px;height:44px;border-radius:10px;padding:0 14px;gap:10px}
+  .hdr .search .ph{font-size:14px;color:#7A7F94}
+  .askai-t{display:flex;align-items:center;gap:5px;color:#00239B;font-size:13px;font-weight:800;white-space:nowrap}
+  .right{gap:0}
+  .hl{align-items:center;gap:7px;color:#fff;font-size:13px;font-weight:600;white-space:nowrap;height:44px;padding:0 14px;border-radius:10px}
+  .hl:hover,.hi:hover{background:rgba(255,255,255,.1)}
+  .hi{width:44px;height:44px;border-radius:10px;align-items:center;justify-content:center;margin-left:4px}
+  .getapp{align-items:center;gap:8px;color:#fff;font-size:13px;font-weight:600;height:40px;padding:0 16px;border:1px solid rgba(255,255,255,.8);border-radius:10px;margin-left:14px;white-space:nowrap}
+  .getapp:hover{background:#fff;color:#00239B}
+  .catbar{background:#00239B;margin:0;box-shadow:none}
+  .catbar .wrap{height:36px;justify-content:center;padding:0;max-width:none}
+  .catbar a.t{font-size:12px;font-weight:600;padding:0 12px;margin:0 2px;border-radius:8px 8px 0 0}
+  .top{padding-bottom:0}
+  main.wrap{padding-top:96px;position:relative}
+  main.wrap:before{content:"";position:absolute;left:-100vw;right:-100vw;top:0;height:120px;background:linear-gradient(180deg,#00239B,#2341D9 70%,rgba(35,65,217,0));z-index:-1}
+  .hero{margin-top:-76px}
+}
+
+/* full-bleed banner on desktop */
+@media (min-width:1024px){
+  main.wrap{padding-top:0}
+  main.wrap:before{display:none}
+  .hero{margin:0 calc(50% - 50vw);border-radius:0;box-shadow:none;
+    padding:40px max(48px,calc(50vw - 672px + 48px))}
+}
+@media (min-width:1024px){.hero h1 em{display:block}}
+
+/* blinking diwali string lights on banner edges */
+.lights{position:absolute;top:0;bottom:0;width:72px;pointer-events:none;z-index:1;display:flex;justify-content:space-around}
+.lights.l{left:8px}.lights.r{right:8px}
+.str{position:relative;width:1px;background:linear-gradient(180deg,rgba(255,227,163,.55),rgba(255,227,163,.1))}
+.bulb{position:absolute;left:-4px;width:9px;height:9px;border-radius:50%;background:#FFD27A;box-shadow:0 0 6px 2px rgba(255,190,80,.9),0 0 16px 4px rgba(255,170,60,.45);animation:twinkle 1.8s ease-in-out infinite}
+.bulb:nth-child(3n){background:#FFF1C9}
+@keyframes twinkle{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.25;transform:scale(.75)}}
+@media (max-width:1023px){.lights{width:44px}.lights .str:nth-child(n+3){display:none}}
+
+/* new banner copy */
+.hero h1{margin-top:0}
+.hero h1 .h1a{display:block;font-size:.62em;font-weight:700;letter-spacing:-.01em}
+.hero h1 em{display:block;color:#F7C843;font-weight:800;font-size:1.25em;line-height:1.05}
+.feats{display:flex;margin-top:12px;font-size:10px;font-weight:600;color:#fff;line-height:1.25}
+.feats span{display:flex;align-items:center;gap:6px;padding-right:10px;margin-right:10px;border-right:1px solid rgba(255,255,255,.3)}
+.feats span:last-child{border:0;margin:0;padding:0}
+.feats svg{width:18px;height:18px;flex:none}
+@media (min-width:1024px){
+  .hero h1{font-size:44px}
+  .hero p{font-size:17px;max-width:480px;margin-top:14px;color:#E3E9FF}
+  .feats{margin-top:22px;font-size:14px}
+  .feats span{gap:12px;padding-right:22px;margin-right:22px}
+  .feats svg{width:28px;height:28px}
+}
+
+/* tablet held in hands, video plays on its screen */
+.tab{position:absolute;left:50%;top:50%;width:300px;transform:translate(-50%,-50%)}
+.tab img{display:block;width:100%;height:auto;position:relative;z-index:2;pointer-events:none}
+.scr{position:absolute;left:15.4%;top:14.6%;width:69.1%;height:73.9%;border-radius:2.6%/5%;overflow:hidden;background:#000;z-index:3}
+.scr video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.scr .tag{position:absolute;top:6%;left:3%;font-size:10px;font-weight:800;background:var(--red);color:#fff;padding:3px 8px;border-radius:5px}
+.scr .st{position:absolute;top:6%;right:3%;font-size:10px;font-weight:600;background:rgba(0,0,0,.45);color:#fff;padding:3px 8px;border-radius:5px}
+.scr .pip{position:absolute;right:3%;bottom:20%;width:13%;height:30%;border-radius:8px;background:linear-gradient(160deg,#F2C9A8,#B9805E);border:2px solid #fff}
+.scr .bar{position:absolute;left:0;right:0;bottom:0;height:16%;background:rgba(0,0,0,.45);display:flex;gap:10px;justify-content:center;align-items:center}
+.scr .bar i{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.25)}
+.scr .bar i.e{background:var(--red)}
+@media (min-width:1024px){
+  .tab{width:600px;left:52%;top:54%}
+  .b1{left:-30px;top:70px}
+  .b2{right:-40px;bottom:40px}
+  .bubble{z-index:4}
+}
+
+/* hands sit on banner bottom edge */
+@media (min-width:1024px){
+  .tab{top:auto;bottom:-40px;transform:translateX(-50%)}
+}
+/* firework sparkles behind the tablet */
+.fw{position:absolute;width:0;height:0;z-index:1;pointer-events:none}
+.fw i{position:absolute;left:-1px;top:0;width:2.5px;height:var(--r);border-radius:2px;transform-origin:50% 0;
+  background:linear-gradient(180deg,rgba(255,255,255,0),var(--c) 60%,#fff);
+  transform:rotate(var(--a)) translateY(0) scaleY(.1);opacity:0;animation:burst 2.8s ease-out infinite;animation-delay:var(--d)}
+.fw b{position:absolute;left:-5px;top:-5px;width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 14px 6px var(--c);opacity:0;animation:core 2.8s ease-out infinite;animation-delay:var(--d)}
+@keyframes burst{0%{opacity:0;transform:rotate(var(--a)) translateY(0) scaleY(.1)}
+  8%{opacity:1}
+  45%{opacity:.9;transform:rotate(var(--a)) translateY(calc(var(--r)*.35)) scaleY(1)}
+  75%,100%{opacity:0;transform:rotate(var(--a)) translateY(calc(var(--r)*.7)) scaleY(.4)}}
+@keyframes core{0%{opacity:0}6%{opacity:1}30%,100%{opacity:0}}
+
+/* canvas fireworks across the whole banner background */
+.fwc{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.hero .copy,.hero .visual{position:relative;z-index:2}
+
+/* banner CTAs */
+.ctas{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+.btn-p,.btn-s{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:12px;font-weight:700;font-size:13px;white-space:nowrap;transition:transform .15s,box-shadow .15s,background .15s}
+.btn-p{background:#F7C843;color:#0E1230;box-shadow:0 8px 20px rgba(247,200,67,.35)}
+.btn-p:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(247,200,67,.5)}
+.btn-s{color:#fff;border:1.5px solid rgba(255,255,255,.55);background:rgba(255,255,255,.06)}
+.btn-s:hover{background:rgba(255,255,255,.16)}
+.btn-s span{transition:transform .15s}.btn-s:hover span{transform:translateX(3px)}
+@media (min-width:1024px){
+  .ctas{margin-top:24px;gap:14px}
+  .btn-p,.btn-s{height:48px;padding:0 24px;font-size:15px}
+}
+/* epik logo on tablet screen */
+.scr .tlogo{position:absolute;top:5%;left:50%;transform:translateX(-50%);color:#fff;font-weight:800;font-size:20px;letter-spacing:-.05em;text-shadow:0 2px 8px rgba(0,0,0,.5);z-index:2}
+.scr .tlogo .tk{position:absolute;right:-7px;top:-6px;color:var(--gold);font-size:10px}
+
+.scr .bar{gap:12px}
+.scr .bar i{display:grid;place-items:center;width:30px;height:30px;background:rgba(255,255,255,.22);backdrop-filter:blur(4px)}
+.scr .bar i svg{width:15px;height:15px}
+.scr .bar i.e{width:40px;border-radius:15px;background:#E5432F}
+.scr .bar i.e svg{width:18px;height:18px;stroke-width:1}
+
+/* epik logo in a primary-blue badge, top-left of the tablet screen (replaces LIVE) */
+.scr .tlogo{left:3%;top:5%;transform:none;background:#00239B;padding:4px 14px 5px 12px;border-radius:8px;font-size:17px;text-shadow:none;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.scr .tlogo .tk{right:6px;top:-3px}
+
+/* real svg logo */
+.logo img{display:block;height:34px;width:auto}
+.scr .tlogo{padding:5px 10px;line-height:0}
+.scr .tlogo img{height:20px;width:auto;display:block}
+/* call bar: uniform circular buttons, centred icons */
+.scr .bar{height:auto;padding:10px 0;gap:14px;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.55))}
+.scr .bar i{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;backdrop-filter:blur(6px)}
+.scr .bar i svg{width:18px;height:18px;display:block}
+.scr .bar i.e{width:54px;height:38px;border-radius:19px;background:#E5432F}
+.scr .bar i.e svg{width:24px;height:24px}
+
+/* screen box for the new tablet image */
+.scr{left:15%;top:13.3%;width:69.9%;height:75.8%;border-radius:3.2%/6.4%}
+
+.scr .feed{z-index:0;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+
+/* smaller call buttons */
+.scr .bar{padding:7px 0;gap:10px}
+.scr .bar i{width:28px;height:28px}
+.scr .bar i svg{width:13px;height:13px}
+.scr .bar i.e{width:40px;height:28px;border-radius:14px}
+.scr .bar i.e svg{width:18px;height:18px}
+
+/* tablet v3 (arms to bottom): screen box + size so the top stays inside the banner */
+.scr{left:19.9%;top:3.4%;width:60.2%;height:62.4%;border-radius:2.6%/4.4%}
+@media (min-width:1024px){.tab{width:540px}}
+
+/* bigger tablet, pushed down so the banner edge crops the forearms */
+@media (min-width:1024px){.tab{width:620px;bottom:-94px;left:auto;right:-29px;transform:none}}
+
+/* customer self-view: landscape tile with the family photo */
+.scr .pip{width:26%;height:auto;aspect-ratio:16/9;right:3%;bottom:auto;top:16%;border-radius:10px;overflow:hidden;background:#000;border:2px solid #fff;box-shadow:0 6px 16px rgba(0,0,0,.35);z-index:2}
+.scr .pip img{width:100%;height:100%;object-fit:cover;object-position:40% 35%;display:block;position:static}
+
+/* self-view: bottom-left, larger */
+.scr .pip{width:34%;left:3%;right:auto;top:auto;bottom:19%}
+
+/* portrait self-view, bottom-left above the call bar */
+.scr .pip{width:22%;aspect-ratio:3/4;left:3%;bottom:6%}
+.scr .pip img{object-position:50% 30%}
+
+/* rare sky lanterns drifting up the banner */
+.lantern{position:absolute;bottom:-60px;width:26px;height:34px;z-index:1;pointer-events:none;
+  filter:drop-shadow(0 0 10px rgba(255,170,60,.85)) drop-shadow(0 0 22px rgba(255,140,40,.45));
+  animation:rise var(--t) linear forwards}
+.lantern svg{display:block;width:100%;height:100%;animation:sway 3.2s ease-in-out infinite alternate}
+@keyframes rise{0%{transform:translateY(0) scale(1);opacity:0}8%{opacity:1}75%{opacity:.9}
+  100%{transform:translateY(calc(-1 * var(--h))) scale(.55);opacity:0}}
+@keyframes sway{from{transform:translateX(-6px) rotate(-4deg)}to{transform:translateX(6px) rotate(4deg)}}
+
+.scr .st.dl{display:flex;align-items:center;gap:6px;background:#F7C843;color:#0E1230;font-weight:700}
+
+/* store cards: just the arch image on the page bg, no white card, no subheading */
+.store,.store:hover{background:none;box-shadow:none;border-radius:0;overflow:visible}
+.store:hover .img{transform:translateY(-3px)}
+.store .img{aspect-ratio:1/1;height:auto!important;background-size:contain;background-repeat:no-repeat;background-position:center bottom;transition:transform .2s;overflow:visible}
+.store .b{padding:10px 2px 0;text-align:center}
+.store .lv{left:50%;transform:translateX(-50%);bottom:10px;white-space:nowrap}
+
+/* ===== mobile (<1024px) ===== */
+@media (max-width:1023px){
+  .top{padding-bottom:56px}
+  .hero{height:auto;padding:18px 18px 0;display:flex;flex-direction:column}
+  .copy{max-width:none}
+  .hero h1{font-size:15px;margin-top:0}
+  .hero h1 em{font-size:30px}
+  .hero p{font-size:12px;max-width:none;margin-top:6px}
+  .feats{margin-top:10px;font-size:10px}
+  .feats span{padding-right:8px;margin-right:8px;gap:5px}
+  .visual{position:relative;right:auto;top:auto;width:100%;height:170px;margin-top:10px}
+  .tab{position:absolute;left:50%;top:auto;bottom:-70px;width:310px;transform:translateX(-50%)}
+  .scr .bar{padding:3px 0;gap:4px}
+  .scr .bar i{width:13px;height:13px}.scr .bar i svg{width:7px;height:7px}
+  .scr .bar i.e{width:19px;height:13px}.scr .bar i.e svg{width:9px;height:9px}
+  .scr .pip{border-width:1px!important;border-radius:6px!important}
+  .scr .tlogo{padding:2px 6px}.scr .tlogo img{height:11px}
+  /* match desktop banner: full-bleed, square edges, lights on both sides */
+  .hero{margin-left:-16px;margin-right:-16px;border-radius:0;box-shadow:none;padding:18px 40px 0}
+  .lights{width:30px}.lights.l{left:2px}.lights.r{right:2px}
+  .lights .str:nth-child(n+3){display:none}
+  /* mobile banner: centred text, tablet centred below */
+  .hero{flex-direction:column;align-items:center;justify-content:flex-start;height:auto;padding:22px 40px 0;text-align:center}
+  .hero .copy{width:100%;display:flex;flex-direction:column;align-items:center}
+  .hero h1{font-size:clamp(12px,3.4vw,18px)!important}
+  .hero h1 .h1a{font-size:1em!important}
+  .hero h1 em{font-size:clamp(24px,7.6vw,46px)!important;white-space:nowrap}
+  .hero p{font-size:clamp(11px,3vw,15px);line-height:1.4;margin-top:6px;max-width:min(90%,440px)}
+  .feats{margin-top:12px;font-size:9.5px;justify-content:center;text-align:left}
+  .feats span{padding-right:8px;margin-right:8px;gap:5px}
+  .hero .visual{position:relative!important;width:100%;height:150px;margin-top:10px}
+  .hero .tab{left:50%!important;right:auto;top:auto!important;bottom:-34px;width:min(clamp(252px,40vw,380px),calc(100vw - 120px));transform:translateX(-50%)!important}
+  /* no category bar on mobile; header sized to suit */
+  .catbar{display:none!important}
+  .top{padding-bottom:0!important}
+  .hero{margin:2px -16px 0!important;border-radius:0!important;overflow:hidden;height:max(278px,calc(176px + 26vw))!important}
+  .hero .visual{flex:1;height:auto!important}
+  .lights.l{left:4px}.lights.r{right:4px}
+  .logo img{height:28px}
+  .ib{width:38px!important;height:38px!important}
+  .store{width:120px}
+  .store .b b{font-size:13px}
+  .store .lv{font-size:9px;padding:3px 7px;bottom:6px}
+  .sh{margin-top:16px}
+  .sh h2{font-size:16px}
+  .dots{margin-top:6px}
+}
+
+/* mobile-only location line under the logo */
+.brandcol{display:contents}
+.mloc{display:none}
+@media (max-width:1023px){
+  .brandcol{display:flex;flex-direction:column;gap:3px}
+  .mloc{display:flex;align-items:center;gap:4px;color:#D3DEFF;font-size:11px;font-weight:500;white-space:nowrap}
+  .mloc b{color:#fff;font-weight:700}
+}
+
+/* ===== 3D coverflow brand stores (mobile) ===== */
+.cf{display:none}
+@media (max-width:1023px){
+  #stores+.railwrap,#stores+.railwrap+.dots{display:none}
+  .cf{display:block;position:relative;margin:12px -16px 0;padding:22px 0 18px;overflow:hidden;
+    background:none;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+  .cf:before{display:none;content:"";position:absolute;left:50%;top:44%;width:260px;height:260px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(77,124,255,.45),transparent 65%);filter:blur(10px);pointer-events:none}
+  .cf-stage{position:relative;height:340px;perspective:1000px;transform-style:preserve-3d}
+  .cf-card{position:absolute;left:50%;top:0;width:228px;height:330px;margin-left:-114px;border-radius:24px;overflow:hidden;
+    background:#0B1240;box-shadow:0 18px 36px rgba(14,18,48,.22);will-change:transform,opacity;cursor:grab;-webkit-tap-highlight-color:transparent}
+  .cf-card.act{box-shadow:0 22px 44px rgba(14,18,48,.3),0 0 0 2px rgba(30,59,216,.35)}
+  .cf-card img,.cf-card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+  .cf-card .sh{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.75) 100%)}
+  .cf-card .bt{position:absolute;top:18px;left:0;right:0;text-align:center;color:#fff;font-weight:800;font-size:17px;letter-spacing:.06em}
+  .cf-card .tl{position:absolute;left:12px;right:12px;bottom:22px;text-align:center;color:#fff;font-weight:700;font-size:26px;line-height:1.08;letter-spacing:-.02em;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+  .cf-card.lt{background:linear-gradient(180deg,#FFFFFF,#ECEEF3)}
+  .cf-card.lt img{object-fit:contain;top:58px;bottom:96px;height:auto;padding:0 10px;mix-blend-mode:multiply}
+  .cf-card.lt .sh{display:none}
+  .cf-card.full{background:#F5F5F5}
+  .cf-card.full img{inset:0;top:0;bottom:0;height:100%;padding:0;object-fit:cover;transform:scale(1.5) translateY(-2%);mix-blend-mode:normal}
+  .cf-card.lt.full .sh{display:block}
+  .cf-card.lt.full .bt,.cf-card.lt.full .tl{color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+  .cf-card.lt .bt,.cf-card.lt .tl{color:#0E1230;text-shadow:none}
+  .cf-name{text-align:center;color:#0E1230;font-weight:800;font-size:22px;margin:4px 0 8px;position:relative}
+  .cf-card .lv{position:absolute;top:12px;left:12px;display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.95);color:#0E1230;border-radius:99px;font-size:10px;font-weight:800;padding:4px 9px}
+  .cf-card .lv:before{content:"";width:6px;height:6px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 3px rgba(34,197,94,.25)}
+  .cf-card .meta{position:absolute;left:16px;right:16px;bottom:16px;color:#fff}
+  .cf-card .meta b{display:block;font-size:20px;font-weight:800;letter-spacing:-.02em}
+  .cf-card .meta span{display:block;font-size:12px;opacity:.75;margin-top:2px}
+  .cf-card .go{margin-top:12px;display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 14px;border-radius:12px;background:#F7C843;color:#0E1230;font-size:12px;font-weight:800;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s}
+  .cf-card.act .go{opacity:1;transform:none}
+  .cf-dots{display:flex;gap:5px;justify-content:center;margin-top:6px;position:relative}
+  .cf-dots i{width:6px;height:6px;border-radius:3px;background:#C9CFDD;transition:all .3s}
+  .cf-dots i.on{width:18px;background:#1E3BD8}
+}
+
+/* mobile: compact squared search, location chip below it */
+.mloc .addr{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1;opacity:.85}
+.mloc.moved>svg:last-child{margin-left:auto;flex:none}
+@media (max-width:1023px){
+  .mob-search{height:44px!important;border-radius:12px!important;margin-top:10px}
+  .mob-search .ai,.mob-search a,.mob-search button{border-radius:9px!important}
+  .mob-search>*:last-child{height:34px}
+  .mloc.moved{display:none!important;width:100%;box-sizing:border-box;margin-top:12px;padding:5px 11px;font-size:11px;overflow:hidden;border-radius:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18)}
+}
+
+/* ===== Diwali intro: plays inside the banner on first load, then reveals it ===== */
+.dw{position:absolute;inset:0;z-index:20;overflow:hidden;display:grid;place-items:center;border-radius:inherit;
+  background:radial-gradient(90% 80% at 50% 45%,#3D63FF 0%,#2341D9 45%,#00239B 100%)}
+.dw.out{animation:dwOut .35s ease .45s forwards}
+.dw.out .stage{animation:dwShake .4s linear}
+.dw .boom{position:absolute;left:50%;top:45%;width:0;height:0;z-index:5}
+.dw .boom .fl{position:absolute;left:-30px;top:-30px;width:60px;height:60px;border-radius:50%;background:radial-gradient(circle,#fff 0,#FFE7A3 30%,rgba(255,180,60,.6) 55%,transparent 70%);animation:dwFlash .7s ease-out forwards}
+.dw .boom b{position:absolute;left:-3px;top:-3px;width:6px;height:6px;border-radius:50%;background:var(--c);box-shadow:0 0 10px 3px var(--c);animation:dwShoot .8s cubic-bezier(.1,.8,.3,1) forwards}
+
+.dw .rk{position:absolute;left:50%;bottom:-20px;width:8px;height:22px;margin-left:-4px;z-index:1;animation:dwRise .75s cubic-bezier(.3,.1,.6,1) forwards}
+.dw .rk:before{content:"";position:absolute;inset:0;border-radius:4px 4px 2px 2px;background:linear-gradient(#FF5A3C,#C81E1E);box-shadow:0 0 8px rgba(255,120,60,.8)}
+.dw .rk:after{content:"";position:absolute;left:50%;top:100%;width:4px;height:70px;margin-left:-2px;border-radius:2px;
+  background:linear-gradient(#FFF3C4,#FFB347 30%,rgba(255,140,40,0));filter:blur(.5px)}
+@keyframes dwRise{0%{transform:translate(0,0)}100%{transform:translate(0,calc(-1 * var(--h)))}}
+@keyframes dwFlash{0%{transform:scale(.2);opacity:1}40%{opacity:1}100%{transform:scale(18);opacity:0}}
+@keyframes dwShoot{0%{transform:translate(0,0) scale(1.4);opacity:1}100%{transform:translate(var(--x),var(--y)) scale(.3);opacity:0}}
+@keyframes dwShake{0%,100%{transform:none}20%{transform:translate(-4px,2px)}40%{transform:translate(4px,-3px)}60%{transform:translate(-3px,-2px)}80%{transform:translate(2px,3px)}}
+.dw .rays{position:absolute;left:50%;top:44%;width:900px;height:900px;margin:-450px 0 0 -450px;opacity:.35;
+  background:repeating-conic-gradient(from 0deg,rgba(255,214,120,.55) 0 2deg,transparent 2deg 12deg);
+  -webkit-mask:radial-gradient(circle,#000 0,transparent 60%);mask:radial-gradient(circle,#000 0,transparent 60%);animation:dwSpin 18s linear infinite}
+.dw .stage{position:relative;z-index:2;width:min(92%,560px);aspect-ratio:1.45;display:grid;place-items:center}
+.dw svg.star{position:absolute;left:50%;top:2%;width:58%;transform:translateX(-50%) scale(0);animation:dwPop .7s cubic-bezier(.2,1.5,.4,1) .15s forwards;filter:drop-shadow(0 6px 0 #7A4410) drop-shadow(0 12px 18px rgba(0,0,0,.4)) drop-shadow(0 0 22px rgba(255,200,80,.55))}
+.dw .bulb{animation:dwBlink 1s steps(2) infinite}
+.dw .bulb:nth-child(odd){animation-delay:.5s}
+.dw .flame{position:absolute;left:50%;top:-6%;width:7%;aspect-ratio:.62;margin-left:-3.5%;border-radius:50% 50% 50% 50%/62% 62% 38% 38%;
+  background:radial-gradient(circle at 50% 72%,#FFF6C8 0 22%,#FFC23A 45%,#FF7A1A 80%);box-shadow:0 0 22px 8px rgba(255,170,40,.55);
+  opacity:0;transform-origin:50% 100%;animation:dwIn .4s ease .7s forwards,dwFlick .18s ease-in-out .9s infinite alternate}
+.dw .burst{position:absolute;width:0;height:0}
+.dw .burst i{position:absolute;left:-1px;top:0;width:2px;height:var(--r);border-radius:2px;transform-origin:50% 0;
+  background:linear-gradient(#FFE6A0,transparent);transform:rotate(var(--a)) scaleY(0);animation:dwRay 1.6s ease-out var(--d) infinite}
+.dw .txt{position:relative;margin-top:8%;text-align:center;font-weight:900;line-height:.92;letter-spacing:-.01em}
+.dw .txt span{display:block;opacity:0;transform:translateY(30px) scale(.6);animation:dwWord .6s cubic-bezier(.2,1.6,.4,1) forwards;
+  background:linear-gradient(90deg,#FFE7A3 0%,#F7C843 40%,#FF8FB8 75%,#E39BFF 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 2px 0 #B5651D) drop-shadow(0 3px 0 #8A3F12) drop-shadow(0 4px 0 #5E2508) drop-shadow(0 10px 14px rgba(0,0,0,.45))}
+.dw .t1{font-size:clamp(30px,9vw,64px);animation-delay:.9s!important}
+.dw .t2{font-size:clamp(34px,10.5vw,76px);animation-delay:1.15s!important}
+.dw .t3{font-size:clamp(28px,8.5vw,60px);animation-delay:1.4s!important}
+.dw .spark{position:absolute;width:4px;height:4px;border-radius:50%;background:#FFE7A3;box-shadow:0 0 8px 2px #FFC94D;animation:dwTw 1.4s ease-in-out infinite}
+@keyframes dwPop{to{transform:translateX(-50%) scale(1)}}
+@keyframes dwIn{to{opacity:1}}
+@keyframes dwFlick{from{transform:scale(1,1) rotate(-2deg)}to{transform:scale(.92,1.08) rotate(2deg)}}
+@keyframes dwBlink{50%{opacity:.25}}
+@keyframes dwSpin{to{transform:rotate(360deg)}}
+@keyframes dwRay{0%{transform:rotate(var(--a)) scaleY(0);opacity:1}60%{transform:rotate(var(--a)) scaleY(1);opacity:1}100%{transform:rotate(var(--a)) scaleY(1) translateY(20%);opacity:0}}
+@keyframes dwWord{to{opacity:1;transform:none}}
+@keyframes dwTw{50%{opacity:.15;transform:scale(.4)}}
+@keyframes dwOut{to{opacity:0;transform:scale(1.06);visibility:hidden}}
+@media (prefers-reduced-motion:reduce){.dw.out{animation:dwOut .3s ease forwards}.dw *{animation-duration:.01s!important;animation-iteration-count:1!important}}
+
+/* mobile: centred brand-store heading, no "See all" */
+@media (max-width:1023px){
+  #stores{justify-content:center;text-align:center;margin-top:26px!important;margin-bottom:0}
+  #stores .r{display:none}
+  #stores h2{font-size:18px!important}
+  #stores+.railwrap+.dots+.cf{margin-top:14px}
+}
+
+
+/* mobile: EPIK Live as plain text in place of the brand-store heading */
+.livetx{display:none}
+@media (max-width:1023px){
+  #stores h2{display:none}
+  .livetx{display:flex;flex-direction:column;align-items:center;line-height:1.2}
+  .livetx b{display:flex;align-items:center;gap:8px;font-size:20px;font-weight:800;color:#0E1230}
+  .livetx b i{width:9px;height:9px;border-radius:50%;background:#E8503F;box-shadow:0 0 0 4px rgba(232,80,63,.18)}
+  .livetx span{font-size:13px;color:#5A6280;font-weight:500;margin-top:3px}
+}
+
+/* mobile intro: keep the diya flame inside the banner */
+@media (max-width:1023px){.dw .stage{width:min(80%,320px);margin-top:56px}}
+
+/* mobile: delivery pill + category icon row under search */
+.mdeliv,.mcats{display:none}
+@media (max-width:1023px){
+  .mdeliv{display:flex;align-items:center;gap:7px;margin-top:8px;padding:4px 10px;border-radius:8px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.18)}
+  .mdeliv span{font-size:11px;color:#E3E9FF}
+  .mdeliv .ad{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mdeliv>svg:first-child{width:14px;height:14px;flex:none}
+  .mdeliv .dd{width:12px;height:12px}.mdeliv b{color:#fff;font-weight:700}
+  .mdeliv .dd{flex:none;opacity:.85}
+  .mdeliv .cta{flex:none;height:34px;padding:0 16px;display:grid;place-items:center;border-radius:10px;background:#F7C843;color:#0E1230;font-weight:800;font-size:13px;text-decoration:none}
+  .mcats{display:flex;justify-content:space-between;gap:0;margin:12px -4px 0;padding:0}
+  .mcats::-webkit-scrollbar{display:none}
+  .mcats a{flex:1 1 0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:0 0 7px;color:#D3DEFF;text-decoration:none;font-size:10.5px;font-weight:600;position:relative;white-space:nowrap}
+  .mcats a svg{width:20px;height:20px}
+  .mcats a.on{color:#fff;font-weight:800}
+  .mcats a.on:after{content:"";position:absolute;left:22%;right:22%;bottom:0;height:3px;border-radius:2px;background:#F7C843}
+}
+
+
+
+/* partner store (distributor) chip, top-right of the tablet screen */
+.scr .dist em{font-style:normal;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.scr .dist i{flex:none}
+.scr .dist{position:absolute;top:5%;right:3%;z-index:2;display:flex;align-items:center;gap:5px;padding:4px 9px;border-radius:99px;background:rgba(14,18,48,.55);backdrop-filter:blur(6px);color:#fff;font-size:11px;font-weight:700;white-space:nowrap}
+.scr .dist i{width:6px;height:6px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 3px rgba(34,197,94,.3)}
+@media (max-width:1023px){.scr .dist{font-size:5.5px;padding:1px 4px;gap:2px;top:4%;right:2.5%;max-width:29%}.scr .dist b{display:none}.scr .dist i{width:4px;height:4px;box-shadow:0 0 0 2px rgba(34,197,94,.3)}}
+
+/* mobile: tagline exactly two lines */
+@media (max-width:1023px){.hero p.tagl{white-space:nowrap;font-size:min(2.5vw,15px)!important;max-width:none!important}}
+
+/* epik badge on the tablet screen: rectangle with slight rounding */
+.scr .tlogo{border-radius:5px!important}
+@media (max-width:1023px){.scr .tlogo{border-radius:3px!important}}
+
+
+/* desktop: tagline two lines, clear of the tablet */
+@media (min-width:1024px){.hero p.tagl{white-space:nowrap;font-size:clamp(13px,1.25vw,17px)!important;max-width:none!important}}
+
+/* desktop: tablet clear of text */
+@media (min-width:1024px){.hero{padding-left:max(104px,calc(50vw - 624px))!important;padding-right:max(104px,calc(50vw - 624px))!important;grid-template-columns:1fr clamp(340px,calc(100vw - 730px),520px)!important;column-gap:20px}.hero .copy{min-width:0}.hero h1 em{white-space:nowrap}.hero .tab{width:clamp(340px,calc(100vw - 730px),520px)!important;right:0!important;bottom:calc(-1 * clamp(50px,5vw,74px))!important}}
+
+/* desktop tablet screen: smaller logo, thin PiP border, smaller call buttons */
+@media (min-width:1024px){
+  .scr .tlogo{padding:3px 6px!important}.scr .tlogo img{height:10px!important}
+  .scr .pip{border-width:1px!important}
+  .scr .bar{gap:7px!important}
+  .scr .bar i{width:22px!important;height:22px!important}.scr .bar i svg{width:11px!important;height:11px!important}
+  .scr .bar i.e{width:30px!important;height:22px!important}
+  .scr .dist{font-size:9px;padding:2px 7px;top:4%;right:2.5%;max-width:27%}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="diya" viewBox="0 0 64 64">
+      <g class="flame"><path d="M32 4c5 8 8 12 8 17a8 8 0 0 1-16 0c0-5 3-9 8-17z" fill="#FFC94D"/><path d="M32 12c2.6 4.5 4 7 4 9.5a4 4 0 0 1-8 0c0-2.5 1.4-5 4-9.5z" fill="#FFF4CC"/></g>
+      <path d="M6 34h52c-2 12-12 20-26 20S8 46 6 34z" fill="#F5A524"/><path d="M6 34h52c-.5 3-1.6 5.6-3.2 8H9.2C7.6 39.6 6.5 37 6 34z" fill="#D9821A"/>
+      <circle cx="20" cy="45" r="2" fill="#FFE3A3"/><circle cx="32" cy="47" r="2" fill="#FFE3A3"/><circle cx="44" cy="45" r="2" fill="#FFE3A3"/>
+    </symbol>
+    <symbol id="rangoli" viewBox="0 0 200 200" fill="none" stroke="#fff" stroke-width="1.5">
+      <circle cx="100" cy="100" r="20"/><circle cx="100" cy="100" r="44"/><circle cx="100" cy="100" r="70" stroke-dasharray="2 6"/><circle cx="100" cy="100" r="94"/>
+      <path id="pt" d="M100 56c10 12 10 32 0 44c-10-12-10-32 0-44z"/>
+      <use href="#pt" transform="rotate(45 100 100)"/><use href="#pt" transform="rotate(90 100 100)"/><use href="#pt" transform="rotate(135 100 100)"/><use href="#pt" transform="rotate(180 100 100)"/><use href="#pt" transform="rotate(225 100 100)"/><use href="#pt" transform="rotate(270 100 100)"/><use href="#pt" transform="rotate(315 100 100)"/>
+    </symbol>
+    <symbol id="vid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="3"/><path d="m16 10 6-3v10l-6-3"/></symbol>
+    <symbol id="mag" viewBox="0 0 24 24" fill="none" stroke="#0E1230" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="mic" viewBox="0 0 24 24" fill="none" stroke="#0E1230" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/></symbol>
+  </defs>
+</svg>
+
+<div class="top">
+  <div class="wrap">
+    <div class="hdr">
+      <div class="brandcol"><div class="logo"><img src="epik-assets/epik-logo.svg" alt="epik"></div><span class="mloc"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Deliver to <b>Pune 411001</b><span class="addr">&nbsp;· Flat 402, Sai Heights, Koregaon Park</span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></span></div>
+      <span class="tagline d">Try and buy<br>everything store</span>
+      <div class="search" style="display:none" id="dsearch">
+        <svg width="18" height="18"><use href="#mag"/></svg><span class="ph q">Search for Robot Vacuum</span>
+        <a class="askai-t" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 3l1.8 6.2L18 11l-6.2 1.8L10 19l-1.8-6.2L2 11l6.2-1.8zM19 2l.8 2.2L22 5l-2.2.8L19 8l-.8-2.2L16 5l2.2-.8z"/></svg>Ask AI</a>
+      </div>
+      <div class="right">
+        <a class="hl d" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Select address</a>
+        <a class="hl d" href="#">How it works</a>
+        <a class="hi d" href="#" aria-label="Account"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></a>
+        <a class="hi d" href="#" aria-label="Cart"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.6 12h11L21 7H6"/></svg></a>
+        <a class="getapp d" href="#">Get the App <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <div class="ib cart m"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E1230" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12h11L21 7H6"/></svg><span class="badge">2</span></div>
+        <div class="ib me m"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div>
+      </div>
+    </div>
+    <div class="search mob-search">
+      <svg width="18" height="18"><use href="#mag"/></svg><span class="ph q">Search for ‘Robot Vacuum’</span>
+      <svg width="18" height="18"><use href="#mic"/></svg><button class="askai"><i>✦</i>Ask AI</button>
+    </div>
+     <div class="mdeliv"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span class="ad">Deliver to <b>411001</b> · Flat 402, Sai Heights, Koregaon Park</span><svg class="dd" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></div>
+     <nav class="mcats"><a class="on" href="#"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="9" r="3.5"/><path d="M7.5 20c.8-3.4 3.4-5.5 6.5-5.5s5.7 2.1 6.5 5.5z"/><path d="M5 3v4M3 5h4"/></svg><span>Picks</span></a><a class="" href="#"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg><span>Home</span></a><a class="" href="#"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 9h16M8 6h.01M11 6h.01"/><circle cx="12" cy="15" r="3"/></svg><span>Kitchen</span></a><a class="" href="#"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><circle cx="12" cy="18" r=".8" fill="currentColor"/></svg><span>Mobiles</span></a><a class="" href="#"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l3 6-9 12L3 9z"/><path d="M3 9h18M9 3l3 6 3-6M12 9v12"/></svg><span>Luxury</span></a></nav>
+  </div>
+<nav class="catbar" id="catbar"><div class="wrap"><a class="t" data-m="0">Home &amp; Living</a><a class="t" data-m="1">Kitchen</a><a class="t" data-m="2">Mobiles &amp; Gadgets</a><a class="t" data-m="3">Personal Luxury</a></div><div class="mega" id="mega"></div></nav>
+</div>
+
+<main class="wrap">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="dw" id="dw" aria-label="Great Diwali Upgrade">
+      <div class="rays"></div>
+      <div class="stage">
+        <svg class="star" viewBox="0 0 200 190"><defs><linearGradient id="dwg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE9A8"/><stop offset=".5" stop-color="#E7A93B"/><stop offset="1" stop-color="#9C5A12"/></linearGradient>
+          <linearGradient id="dwi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A3A12"/><stop offset="1" stop-color="#3A1206"/></linearGradient></defs>
+          <path d="M100 6l25 62 66 3-51 42 17 65-57-36-57 36 17-65-51-42 66-3z" fill="url(#dwg)" stroke="#FFF1C2" stroke-width="2"/>
+          <g id="dwf"></g>
+          <g fill="#FFF6D6" id="dwb"></g></svg>
+        <div class="flame"></div>
+        <div class="txt"><span class="t1">Great</span><span class="t2">Diwali</span><span class="t3">Upgrade</span></div>
+      </div>
+    </div>
+    <canvas class="fwc" id="fwc"></canvas>
+    <div class="lights l"></div><div class="lights r"></div>
+    <div class="copy">
+      <h1><span class="h1a">Shop Smarter with</span><em>Live Video Demos</em></h1>
+      <p class="tagl">Explore products from trusted partner stores across India.<br>Experience live demos with real store experts before you buy.</p>
+      <div class="feats">
+        <span><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h3l3-2h3l-4 4a1.5 1.5 0 0 0 2 2l3-2 4 4"/><path d="M21 7h-3l-2-1"/><path d="M3 7v7h2l5 4a1.5 1.5 0 0 0 2-2"/><path d="M21 7v7h-3l-3 3a1.5 1.5 0 0 1-2-1"/></svg>Trusted partner<br>stores</span>
+        <span><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="3"/><path d="m16 10 6-3v10l-6-3"/></svg>Live product<br>demos</span>
+        <span><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 9.3-8 11-4.5-1.7-8-6-8-11V5z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Buy with<br>confidence</span>
+      </div>
+    </div>
+    <div class="visual">
+      <div class="tab">
+        <img src="epik-assets/tablet-hands.png?v=3" alt="">
+        <div class="scr">
+          <img class="feed" src="epik-assets/expert-call.webp" alt="Epik store expert demoing a robot vacuum on a video call">
+          <span class="tlogo"><img src="epik-assets/epik-logo.svg" alt="epik"></span><span class="dist"><i></i><em>Sai Electronics<b>&nbsp;· Pune</b></em></span>
+          <div class="pip"><img src="epik-assets/customer-woman.webp" alt="Customer watching the demo at home"></div>
+          <div class="bar"><i title="Mute"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0"/><path d="M12 17.5V21"/></svg></i><i title="Camera"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6.5" width="13" height="11" rx="2.5"/><path d="m15.5 10.5 6-3.5v10l-6-3.5"/></svg></i><i class="e" title="End call"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 9c-2.7 0-5.3.6-7.6 1.8a1.6 1.6 0 0 0-.9 1.5v2.3c0 .6.5 1 1.1 1l3.1-.6c.5-.1.9-.6.9-1.1v-1.6a10 10 0 0 1 6.8 0v1.6c0 .5.4 1 .9 1.1l3.1.6c.6 0 1.1-.4 1.1-1v-2.3c0-.6-.3-1.2-.9-1.5A16.6 16.6 0 0 0 12 9z"/></svg></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND STORES -->
+  <div class="sh" id="stores" style="scroll-margin-top:16px">
+    <div><h2>Shop live from brand stores</h2><div class="livetx"><b>Brand Stores</b></div></div>
+    <div class="r">
+      <a href="#">See all 120+ →</a>
+    </div>
+  </div>
+  <div class="railwrap">
+    <button class="arrow l" data-d="-1">‹</button>
+    <div class="rail" id="rail"></div>
+    <button class="arrow r" data-d="1">›</button>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="cf" id="cf"><div class="cf-stage" id="cfStage"></div><div class="cf-dots" id="cfDots"></div></div>
+  <div class="spacer"></div>
+</main>
+
+<nav class="nav">
+  <div class="on"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z"/></svg></div>
+  <div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></div>
+  <div><svg width="22" height="22"><use href="#vid"/></svg></div>
+  <div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"/></svg><span class="dot"></span></div>
+  <div><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3"/><path d="M6.5 18.5c1.5-2 3.4-3 5.5-3s4 1 5.5 3"/></svg></div>
+</nav>
+
+<script>
+// desktop search lives in header row; mobile search sits below it
+const mq=matchMedia('(min-width:1024px)');
+const setSearch=()=>{document.getElementById('dsearch').style.display=mq.matches?'flex':'none';
+  document.querySelectorAll('.dsk-only').forEach(e=>e.style.display=mq.matches?'inline':'none');
+  document.querySelectorAll('.mob-only').forEach(e=>e.style.display=mq.matches?'none':'inline');};
+mq.addEventListener('change',setSearch);setSearch();
+
+const stores=[
+ ["Samsung","samsung.webp","Galaxy S, Fold, TVs",8,"mob"],
+ ["Apple","apple.webp","iPhone, iPad, AirPods",6,"mob"],
+ ["Dyson","dyson.webp","Vacuums, hair care",3,"home"],
+ ["Narwal","narwal.webp","Robot vacuums & mops",4,"home"],
+ ["Philips","philips.webp","Air fryers, grooming",2,"kit"],
+ ["Ray-Ban Meta","rayban.png","AI smart glasses",3,"mob"],
+ ["SharkNinja","sharkninja.webp","Kitchen, cleaning",5,"kit"],
+ ["Dreame","dreame.webp","Robot vacuums, hair care",3,"home"],
+ ["Ecovacs","ecovacs.webp","Robot vacuums",2,"home"],
+];
+const rail=document.getElementById('rail'),dots=document.getElementById('dots');
+function render(c){
+  const list=stores.filter(s=>c=='all'||s[4]==c);
+  rail.innerHTML=list.map(([n,img,d,l])=>`<a class="store" href="${n==='Apple'?'epik-apple-store-copy.html?intro':'#'}"><div class="img" style="background-image:url(epik-assets/store-${img})"><span class="lv">${({Samsung:265,Apple:212,Dyson:148,Narwal:96,Philips:134,"Ray-Ban Meta":187,SharkNinja:121,Dreame:88,Ecovacs:73})[n]||120} exploring live</span></div><div class="b"><b>${n}</b></div></a>`).join('');
+  dots.innerHTML=list.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('');rail.scrollLeft=0;
+}
+render('all');
+rail.addEventListener('scroll',()=>{const w=rail.firstElementChild.offsetWidth+12;const i=Math.round(rail.scrollLeft/w);[...dots.children].forEach((d,j)=>d.classList.toggle('on',j===i))});
+document.querySelectorAll('.arrow').forEach(b=>b.onclick=()=>rail.scrollBy({left:b.dataset.d*rail.clientWidth*.8}));
+document.querySelectorAll('#tabs span').forEach(t=>t.onclick=()=>{document.querySelectorAll('#tabs span').forEach(x=>x.classList.remove('on'));t.classList.add('on');render(t.dataset.c)});
+
+const qs=['‘Robot Vacuum’','‘Galaxy S25’','‘OLED TV’','‘Ray-Ban Meta’'];let qi=0;
+setInterval(()=>{qi=(qi+1)%qs.length;document.querySelectorAll('.q').forEach(e=>e.textContent='Search for '+qs[qi])},2500);
+
+// mega menu (content from getepik.in)
+const MENUS=[
+ [[["Cleaning",["Robot Vacuum Cleaner","Robot Vacuum Accessories","Handheld Vacuums","Canister vacuums"]],["Entertainment",["Projectors"]],["Home Wellness",["Air Purifiers"]],["Home Appliances",["Dishwasher"]]],["Ecovacs","Dreame","Narwal","Bosch","Xgimi","iLife","Dyson","SharkNinja"]],
+ [[["Kitchen Appliances",["Air Fryers","Built-in Oven","Chimneys","Coffee Machines","Cookware & Dining","Electric Pressure Cookers","Juicers & Blenders","Kitchen Robots","Mixer Grinders","Water Purifiers"]]],["Bosch","Upliance","EDT","AO Smith","Wonderchef","De'Longhi","SharkNinja","Geek","Ember"]],
+ [[["Mobile Phones",["Mobile Phones","Mobile Accessories"]],["Tablets",["iPads"]],["Smart Glasses",["Smart Glasses"]],["Laptops",["MacBooks"]]],["Samsung","Ray Ban","Oakley","Apple"],[["Wearable Gadgets",["Smart Rings","Smart Watches"]],["Audio Devices",["Wireless Earbuds"]],["Gaming Accessories",["Controllers"]]]],
+ [[["Personal Care",["Hair Dryers","Hair Removal","Hair Straighteners","Hair Stylers"]]],["Dyson","Philips","Winston"]]
+];
+const mega=document.getElementById('mega'),tabsT=[...document.querySelectorAll('.catbar a.t')];
+const grp=g=>g.map(([h,items],i)=>`${i?'<hr>':''}<h6>${h}</h6>${items.map(x=>`<a href="#">${x}</a>`).join('')}`).join('');
+let cur=-1,hideT;
+function showMenu(i){
+  clearTimeout(hideT);if(cur===i)return;cur=i;
+  const [left,brands,mid]=MENUS[i];
+  const cols=[`<div class="col">${grp(left)}</div>`];
+  if(mid)cols.push(`<div class="col g">${grp(mid)}</div>`);
+  cols.push(`<div class="col ${mid?'':'g'}"><h6>Top Brands</h6>${brands.map(b=>`<a href="#">${b}</a>`).join('')}</div>`);
+  mega.style.gridTemplateColumns=`repeat(${cols.length},auto)`;
+  mega.innerHTML=cols.join('');mega.classList.add('open');
+  tabsT.forEach((t,j)=>t.classList.toggle('on',j===i));
+  if(mq.matches)mega.style.left=Math.max(0,tabsT[i].getBoundingClientRect().left-document.getElementById('catbar').getBoundingClientRect().left-40)+'px';else mega.style.left='0';
+}
+function hideMenu(){hideT=setTimeout(()=>{mega.classList.remove('open');tabsT.forEach(t=>t.classList.remove('on'));cur=-1},150)}
+tabsT.forEach((t,i)=>{t.addEventListener('mouseenter',()=>mq.matches&&showMenu(i));t.addEventListener('click',e=>{e.preventDefault();cur===i?hideMenu():showMenu(i)})});
+document.getElementById('catbar').addEventListener('mouseleave',()=>mq.matches&&hideMenu());
+mega.addEventListener('mouseenter',()=>clearTimeout(hideT));
+document.addEventListener('click',e=>{if(!e.target.closest('#catbar'))hideMenu()});
+
+// build string lights: each string hangs a different length with staggered blink
+document.querySelectorAll('.lights').forEach((box,k)=>{
+  const lens=k?[170,280,130]:[230,140,290];
+  box.innerHTML=lens.map((h,j)=>{let b='';for(let y=18;y<h;y+=26)b+=`<i class="bulb" style="top:${y}px;animation-delay:${((y/26+j*2+k)%5)*.35}s"></i>`;return `<span class="str" style="height:${h}px">${b}</span>`}).join('');
+});
+
+
+// Diwali fireworks: rockets rise slowly, burst into glowing particles with
+// gravity, drag, flicker and fading trails. Spawn rate eases up over time.
+(()=>{
+  const cv=document.getElementById('fwc'),ctx=cv.getContext('2d'),hero=cv.parentElement;
+  const COLS=['#FFD27A','#FF7AC6','#FFB36B','#FFF1C9','#FF9BD8','#9FD0FF'];
+  let W,H,dpr,parts=[],rockets=[],t0=performance.now(),next=0;
+  const fit=()=>{dpr=Math.min(2,devicePixelRatio||1);W=hero.clientWidth;H=hero.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)};
+  fit();addEventListener('resize',fit);
+  const rnd=(a,b)=>a+Math.random()*(b-a),mob=matchMedia('(max-width:1023px)');
+  function launch(){
+    // keep most bursts away from the headline block on the left
+    // visible zones: gap between headline and tablet, or the strip above the tablet
+    if(mob.matches){ // mobile: small bursts near the side edges, clear of the centred text
+      const l=Math.random()<.5;rockets.push({x:l?rnd(W*.06,W*.16):rnd(W*.84,W*.94),y:H+10,vx:0,vy:-rnd(3.6,4.4),ty:rnd(H*.12,H*.4),c:COLS[(Math.random()*COLS.length)|0]});return}
+    const gapZone=Math.random()<.45;
+    const x=gapZone?rnd(W*.4,W*.54):rnd(W*.56,W*.96);
+    const ty=gapZone?rnd(H*.15,H*.55):rnd(H*.07,H*.2);
+    rockets.push({x,y:H+10,vx:rnd(-.2,.2),vy:-rnd(4.2,5.2),ty,c:COLS[(Math.random()*COLS.length)|0]});
+  }
+  function burst(r){
+    const n=(mob.matches?rnd(30,45):rnd(70,110))|0,sp=mob.matches?rnd(1,1.5):rnd(1.6,2.6),c2=Math.random()<.4?COLS[(Math.random()*COLS.length)|0]:r.c;
+    for(let i=0;i<n;i++){const a=i/n*Math.PI*2+rnd(-.05,.05),v=sp*rnd(.55,1);
+      parts.push({x:r.x,y:r.y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,life:1,decay:rnd(.008,.014),c:i%3?r.c:c2,s:rnd(1.2,2.2),px:r.x,py:r.y});}
+    parts.push({flash:1,x:r.x,y:r.y,life:1,decay:.06});
+  }
+  function frame(now){
+    const age=(now-t0)/1000;
+    // gap between launches shrinks from ~1.8s to ~0.7s over the first 12s
+    const gap=mob.matches?3.2:Math.max(.7,1.8-age*.09);
+    // mobile: a few small side bursts, starting only after the intro has finished
+    if(now>next&&(!mob.matches||age>5.5)){launch();next=now+gap*1000*rnd(.7,1.2)}
+    ctx.globalCompositeOperation='destination-out';ctx.fillStyle='rgba(0,0,0,.22)';ctx.fillRect(0,0,W,H);
+    ctx.globalCompositeOperation='lighter';
+    rockets=rockets.filter(r=>{r.x+=r.vx;r.y+=r.vy;r.vy+=.012;
+      ctx.fillStyle='rgba(255,230,180,.9)';ctx.beginPath();ctx.arc(r.x,r.y,1.6,0,7);ctx.fill();
+      if(r.y<=r.ty||r.vy>=-.4){burst(r);return false}return true});
+    parts=parts.filter(p=>{
+      if(p.flash){const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,40*p.life);g.addColorStop(0,`rgba(255,255,255,${.7*p.life})`);g.addColorStop(1,'rgba(255,200,120,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(p.x,p.y,40*p.life,0,7);ctx.fill();p.life-=p.decay;return p.life>0}
+      p.px=p.x;p.py=p.y;p.vx*=.985;p.vy=p.vy*.985+.022;p.x+=p.vx;p.y+=p.vy;p.life-=p.decay;
+      const al=Math.max(0,p.life)*(p.life<.3?(.6+Math.random()*.4):1);
+      ctx.strokeStyle=p.c;ctx.globalAlpha=al;ctx.lineWidth=p.s;ctx.lineCap='round';
+      ctx.beginPath();ctx.moveTo(p.px-p.vx*2,p.py-p.vy*2);ctx.lineTo(p.x,p.y);ctx.stroke();
+      ctx.globalAlpha=1;return p.life>0});
+    requestAnimationFrame(frame);
+  }
+  // tap/click anywhere on the banner sets off a burst at that point
+  hero.addEventListener('pointerdown',e=>{if(e.target.closest('a,button')||document.getElementById('dw'))return;
+    const b=hero.getBoundingClientRect(),c=COLS[(Math.random()*COLS.length)|0];
+    burst({x:e.clientX-b.left,y:e.clientY-b.top,c});burst({x:e.clientX-b.left,y:e.clientY-b.top,c:COLS[(Math.random()*COLS.length)|0]})});
+  requestAnimationFrame(frame);
+})();
+
+// sky lanterns: one rises every 9-16s, in the open areas of the banner
+(()=>{
+  const hero=document.querySelector('.hero');
+  const svg='<svg viewBox="0 0 26 34"><defs><radialGradient id="lg1" cx="50%" cy="65%" r="60%"><stop offset="0" stop-color="#FFF4C9"/><stop offset=".45" stop-color="#FFB84D"/><stop offset="1" stop-color="#E0661F"/></radialGradient></defs><path d="M5 2h16l3 26a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3z" fill="url(#lg1)"/><path d="M5 2h16" stroke="#C4531A" stroke-width="1.5"/><ellipse cx="13" cy="30" rx="4" ry="1.6" fill="#FFF8DD"/></svg>';
+  function spawn(){
+    const W=hero.clientWidth,H=hero.clientHeight;
+    const zones=[[.40,.53],[.06,.30]];const z=zones[Math.random()<.7?0:1];
+    const el=document.createElement('span');el.className='lantern';el.innerHTML=svg;
+    const sc=.7+Math.random()*.5;
+    el.style.cssText=`left:${(z[0]+Math.random()*(z[1]-z[0]))*W}px;--t:${11+Math.random()*5}s;--h:${H+80}px;width:${26*sc}px;height:${34*sc}px`;
+    hero.appendChild(el);el.addEventListener('animationend',e=>{if(e.animationName==='rise')el.remove()});
+    setTimeout(spawn,9000+Math.random()*7000);
+  }
+  setTimeout(spawn,2500);
+})();
+
+// ===== 3D coverflow (mobile brand stores) =====
+(()=>{
+  const stage=document.getElementById('cfStage'),dotsEl=document.getElementById('cfDots'),wrap=document.getElementById('cf');
+  const live={Samsung:265,Apple:212,Dyson:148,Narwal:96,Philips:134,"Ray-Ban Meta":187,SharkNinja:121,Dreame:88,Ecovacs:73};
+  const n=stores.length;
+  // [src, object-position, light studio shot?]
+  const cfImg={Samsung:['cf/samsung.jpg','72% 50%'],Apple:['gallery/iphone-2.webp','50% 50%',2],Dyson:['cf/dyson.jpg','40% 50%'],Narwal:['cf/narwal.png','58% 50%'],
+    Philips:['cf/philips.png','50% 50%',1],SharkNinja:['cf/sharkninja.jpg','50% 50%',1],Dreame:['cf/dreame.webp','50% 50%',1],Ecovacs:['cf/ecovacs.jpg','82% 60%',1]};
+  const tag={Samsung:'Galaxy AI<br>Is Here',Apple:'Hello,<br>New iPhone',Dyson:'Engineered<br>to Clean',Narwal:'Mops Itself.<br>Cleans Itself.',Philips:'Crispy,<br>Less Oil',"Ray-Ban Meta":'Smart Looks<br>Good',SharkNinja:'Power Meets<br>Kitchen',Dreame:'Clean Smarter<br>Every Day',Ecovacs:'Let the Robot<br>Do It'};
+  stage.innerHTML=stores.map(([nm,img],i)=>{const [src,op,lt]=cfImg[nm]||['store-'+img,'50% 50%'];
+    return `<a class="cf-card${lt==2?' lt full':lt?' lt':''}" data-i="${i}" href="${nm==='Apple'?'epik-apple-store-copy.html?intro':'#'}" draggable="false">
+    <img src="epik-assets/${src}" alt="${nm}" style="object-position:${op}">
+    <div class="sh"></div><div class="bt">${nm.toUpperCase()}</div><div class="tl">${tag[nm]}</div></a>`}).join('');
+  const nameEl=document.createElement('div');nameEl.className='cf-name';stage.after(nameEl);
+  dotsEl.innerHTML=stores.map(()=>'<i></i>').join('');
+  const cards=[...stage.children],dots=[...dotsEl.children];
+  let pos=0,vel=0,target=0,drag=null,last=-1;
+  const wrapD=d=>{d=((d%n)+n)%n;return d>n/2?d-n:d};
+  function paint(){
+    cards.forEach((c,i)=>{
+      const d=wrapD(i-pos),a=Math.abs(d);
+      const x=Math.sign(d)*(a<1?a*128:128+(a-1)*58);
+      const s=1-Math.min(a,3)*.14, ry=-Math.max(-1,Math.min(1,d))*28, z=-Math.min(a,3)*90;
+      c.style.transform=`translateX(${x}px) translateZ(${z}px) rotateY(${ry}deg) scale(${s})`;
+      c.style.opacity=a>2.6?0:Math.max(0,1-a*.32);
+      c.style.filter=`brightness(${1-Math.min(a,2)*.25})`;
+      c.style.zIndex=100-Math.round(a*10);
+    });
+    const cur=((Math.round(pos)%n)+n)%n;
+    if(cur!==last){last=cur;cards.forEach((c,i)=>{c.classList.toggle('act',i===cur);const v=c.querySelector('video');if(v)i===cur?v.play().catch(()=>{}):v.pause()});dots.forEach((d,i)=>d.classList.toggle('on',i===cur));nameEl.textContent=stores[cur][0]}
+  }
+  function tick(){
+    if(!drag){const f=(target-pos)*170, damp=-vel*24;vel+=(f+damp)/60;pos+=vel/60;
+      if(Math.abs(target-pos)<.0005&&Math.abs(vel)<.0005){pos=target;vel=0}}
+    paint();requestAnimationFrame(tick);
+  }
+  wrap.addEventListener('pointerdown',e=>{drag={x:e.clientX,p:pos,t:performance.now(),moved:false};vel=0});
+  addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x;if(Math.abs(dx)>4)drag.moved=true;
+    const np=drag.p-dx/150;const now=performance.now();vel=(np-pos)/Math.max(1,now-drag.t)*1000;drag.t=now;pos=np});
+  addEventListener('pointerup',()=>{if(!drag)return;const m=drag.moved;drag=null;
+    target=Math.round(pos+Math.max(-1.5,Math.min(1.5,vel*.12)));vel*=.3;wrap._moved=m});
+  stage.addEventListener('click',e=>{const c=e.target.closest('.cf-card');if(!c)return;
+    if(wrap._moved){e.preventDefault();wrap._moved=false;return}
+    const i=+c.dataset.i,cur=((Math.round(pos)%n)+n)%n;
+    if(i!==cur){e.preventDefault();target=Math.round(pos)+wrapD(i-cur)}});
+  dots.forEach((d,i)=>d.onclick=()=>{const cur=((Math.round(pos)%n)+n)%n;target=Math.round(pos)+wrapD(i-cur)});
+  tick();
+})();
+
+// mobile: move location chip below the search bar
+(()=>{const m=document.querySelector('.mloc'),srch=document.querySelector('.mob-search');if(!m||!srch)return;
+  const home=m.parentElement,place=()=>{if(matchMedia("(max-width:1023px)").matches){srch.before(m);m.classList.add('moved')}else{home.appendChild(m);m.classList.remove('moved')}};
+  place();matchMedia('(max-width:1023px)').addEventListener('change',place)})();
+
+// Diwali intro: star bulbs, firework bursts, sparkles; removed after it fades
+(()=>{const dw=document.getElementById('dw');if(!dw)return;
+  const g=dw.querySelector('#dwb'),P=[[100,6],[125,68],[191,71],[140,113],[157,178],[100,142],[43,178],[60,113],[9,71],[75,68]];
+  for(let k=0;k<10;k++){const[a,b]=P[k],[c,d]=P[(k+1)%10];for(let t=.15;t<.9;t+=.18){const e=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    e.setAttribute('cx',a+(c-a)*t);e.setAttribute('cy',b+(d-b)*t);e.setAttribute('r',2.2);e.setAttribute('class','bulb');g.appendChild(e)}}
+  // faceted bevel: each star edge gets a lit and a shaded triangle toward the centre
+  const f=dw.querySelector('#dwf'),C=[100,108],k=.86,Q=P.map(([x,y])=>[C[0]+(x-C[0])*k,C[1]+(y-C[1])*k]);
+  for(let i=0;i<10;i++){const a=Q[i],b=Q[(i+1)%10],t=document.createElementNS('http://www.w3.org/2000/svg','path');
+    t.setAttribute('d',`M${C}L${a}L${b}Z`);t.setAttribute('fill',i%2?'#B8741C':'#FFE3A0');t.setAttribute('stroke','#8A5212');t.setAttribute('stroke-width','.4');f.appendChild(t)}
+  const st=dw.querySelector('.stage');
+  [[12,22,.2],[88,18,.6],[8,70,1],[92,66,1.3],[50,8,1.7]].forEach(([x,y,d])=>{const b=document.createElement('div');b.className='burst';b.style.cssText=`left:${x}%;top:${y}%`;
+    b.innerHTML=Array.from({length:12},(_,i)=>`<i style="--a:${i*30}deg;--r:${18+Math.random()*14}px;--d:${d}s"></i>`).join('');st.appendChild(b)});
+  for(let i=0;i<26;i++){const s=document.createElement('i');s.className='spark';s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*1.4}s`;dw.appendChild(s)}
+  dw.addEventListener('animationend',e=>{if(e.animationName==='dwOut')dw.remove()});
+  // cracker blast transition: flash + particles burst from the centre, then the banner shows
+  // rocket launches from the bottom, then bursts at the centre
+  const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  setTimeout(()=>{const rk=document.createElement('i');rk.className='rk';rk.style.setProperty('--h',(dw.clientHeight*.55+20)+'px');dw.appendChild(rk);
+    rk.addEventListener('animationend',()=>rk.remove())},rm?1200:3250);
+  setTimeout(()=>{const bm=document.createElement('div');bm.className='boom';const cs=['#FFE7A3','#F7C843','#FF8FB8','#fff','#7FD8FF','#FFB04D'];
+    bm.innerHTML='<i class="fl"></i>'+Array.from({length:60},()=>{const a=Math.random()*Math.PI*2,r=120+Math.random()*260;
+      return `<b style="--x:${Math.cos(a)*r}px;--y:${Math.sin(a)*r}px;--c:${cs[Math.random()*cs.length|0]};animation-delay:${Math.random()*.08}s"></b>`}).join('');
+    dw.appendChild(bm);dw.classList.add('out')},matchMedia('(prefers-reduced-motion:reduce)').matches?2000:4000);
+})();
+
+// mobile category row: tap to set active
+document.querySelectorAll('.mcats a').forEach(a=>a.onclick=e=>{e.preventDefault();document.querySelectorAll('.mcats a').forEach(x=>x.classList.toggle('on',x===a))});
+</script>
+</body>
+</html>

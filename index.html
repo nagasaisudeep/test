@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Epik Responsive Preview</title>
+<style>
+  :root { --bg:#111214; --fg:#e8e8ea; --muted:#8a8b90; --frame:#2a2b30; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; background:var(--bg); color:var(--fg);
+    font:13px/1.4 -apple-system, BlinkMacSystemFont, "Inter", sans-serif; overflow-x:hidden; }
+  .stage { display:flex; gap:40px; align-items:center; justify-content:center; height:100vh; padding:70px 40px 30px; }
+  .doc { padding:0 40px 60px; }
+  .doc h2 { font-size:15px; font-weight:600; margin:0 0 12px; }
+  .doc iframe { width:100%; height:calc(100vh - 80px); border:1px solid var(--frame); border-radius:10px; background:#fff; }
+  .dev { display:flex; flex-direction:column; gap:10px; align-items:center; }
+  .label { color:var(--muted); letter-spacing:.02em; }
+  .label b { color:var(--fg); font-weight:600; }
+  .box { position:relative; overflow:hidden; border:1px solid var(--frame); border-radius:10px; background:#fff; }
+  .dev.mobile .box { border-radius:28px; border-width:6px; border-color:#000; }
+  .bar { position:absolute; top:14px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:5; }
+  .seg { display:flex; background:#1d1e22; border:1px solid var(--frame); border-radius:999px; padding:3px; }
+  .seg button, .reload { all:unset; cursor:pointer; padding:6px 14px; border-radius:999px; color:var(--muted); }
+  .seg button.on { background:var(--fg); color:#111; }
+  .reload { background:#1d1e22; border:1px solid var(--frame); color:var(--fg); }
+  .reload:hover, .seg button:hover:not(.on) { color:var(--fg); }
+  .dev.hide { display:none; }
+  .box iframe { position:absolute; top:0; left:0; border:0; transform-origin:0 0; background:#fff; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="seg">
+    <button data-v="desktop" class="on">Website</button>
+    <button data-v="mobile">Mobile</button>
+  </div>
+  <button class="reload" id="reload">↻ Reload</button>
+</div>
+<div class="stage" id="stage">
+  <div class="dev desktop" data-w="1440" data-h="900">
+    <div class="box"><iframe src="epik-preview-src/web/epik-site/epik-home-responsive-copy.html" width="1440" height="900"></iframe></div>
+    <div class="label"><b>Desktop web</b> · 1440 × 900</div>
+  </div>
+  <div class="dev mobile hide" data-w="390" data-h="844">
+    <div class="box"><iframe src="epik-preview-src/mobile/epik-site/epik-home-mobile.html" width="390" height="844"></iframe></div>
+    <div class="label"><b>Mobile web</b> · 390 × 844</div>
+  </div>
+</div>
+<section class="doc">
+  <h2>Design Decisions</h2>
+  <iframe src="epik-preview-src/design-decisions.pdf#view=FitH" title="Design Decisions"></iframe>
+</section>
+<script>
+  function fit() {
+    const devs = [...document.querySelectorAll('.dev:not(.hide)')];
+    const gap = 40, pad = 100, labelH = 30;
+    const totalW = devs.reduce((s, d) => s + +d.dataset.w, 0);
+    const maxH = Math.max(...devs.map(d => +d.dataset.h));
+    const s = Math.min((innerWidth - pad - gap) / totalW, (innerHeight - pad - labelH) / maxH, 1);
+    devs.forEach(d => {
+      const w = +d.dataset.w, h = +d.dataset.h, box = d.querySelector('.box');
+      box.style.width = w * s + 'px'; box.style.height = h * s + 'px';
+      d.querySelector('iframe').style.transform = `scale(${s})`;
+    });
+  }
+  document.querySelectorAll('.seg button').forEach(b => b.onclick = () => {
+    document.querySelectorAll('.seg button').forEach(x => x.classList.toggle('on', x === b));
+    document.querySelectorAll('.dev').forEach(d =>
+      d.classList.toggle('hide', !d.classList.contains(b.dataset.v)));
+    fit();
+  });
+  document.getElementById('reload').onclick = () =>
+    document.querySelectorAll('.dev iframe').forEach(f => f.src = f.src);
+  addEventListener('resize', fit); fit();
+</script>
+</body>
+</html>
