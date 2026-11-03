@@ -16,7 +16,7 @@
   .dev { display:flex; flex-direction:column; gap:10px; align-items:center; }
   .label { color:var(--muted); letter-spacing:.02em; }
   .label b { color:var(--fg); font-weight:600; }
-  .box { position:relative; overflow:hidden; border:1px solid var(--frame); border-radius:10px; background:#fff; }
+  .box { box-sizing:content-box; position:relative; overflow:hidden; border:1px solid var(--frame); border-radius:10px; background:#fff; }
   .dev.mobile .box { border-radius:28px; border-width:6px; border-color:#000; }
   .bar { position:absolute; top:14px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:5; }
   .seg { display:flex; background:var(--chip); border:1px solid var(--frame); border-radius:999px; padding:3px; }
